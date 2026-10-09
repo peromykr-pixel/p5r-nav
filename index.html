@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>P5R 한국어판 자유플레이 내비게이터 V8</title>
+<title>P5R 한국어판 자유플레이 내비게이터 V9</title>
 <style>
 :root{--bg:#0b0c10;--panel:#14161d;--text:#f4f5f7;--muted:#a8adbb;--red:#e6203c;--red2:#ff3b54;--line:#2a2e39;--gold:#f4c44e;--green:#35d07f;--blue:#5fb2ff;--purple:#b793ff;--orange:#ff9f43;--shadow:0 12px 30px rgba(0,0,0,.28)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#08090c,#10121a 28%,#0b0c10);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}
@@ -173,14 +173,87 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 .rq-card summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:9px;align-items:center;padding:12px}.rq-card summary::-webkit-details-marker{display:none}.rq-card[open] summary{background:#191c24;border-bottom:1px solid var(--line)}.rq-summary-main{min-width:0}.rq-title{font-weight:900;font-size:14px;color:#fff}.rq-meta{margin-top:3px;color:#9299a8;font-size:10.5px}.rq-priority{font-size:10px;font-weight:900;border-radius:999px;padding:3px 7px;background:#0e1015;border:1px solid #343945;color:#d6d9df;white-space:nowrap}
 .rq-body{padding:8px 10px 11px}.rq-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:9px;padding:8px 3px;border-bottom:1px dashed #2b2f39}.rq-row:last-child{border-bottom:0}.rq-row>span{font-size:11px;font-weight:900;color:#aeb6c6}.rq-row p{margin:0;font-size:12.5px;color:#e0e3e9;line-height:1.55}.rq-answer p{color:#bce7ff}.rq-reward p{color:#f5cf75;font-weight:750}.rq-hidden{display:none!important}
 @media(max-width:900px){.rq-list{grid-template-columns:1fr}}@media(max-width:560px){.primary-nav-btn{gap:5px;padding:8px 6px}.primary-nav-icon{font-size:17px}.primary-nav-btn b{font-size:11.5px}.primary-nav-btn small{display:none}.rq-card summary{grid-template-columns:auto minmax(0,1fr) auto;gap:7px}.rq-card summary .chev{display:none}.rq-priority{font-size:9px;padding:2px 5px}.rq-row{grid-template-columns:76px minmax(0,1fr)}}
+
+/* V9 romance-route markers */
+.romance-global-banner{
+  margin:0 0 12px;
+  padding:11px 12px;
+  border-radius:11px;
+  background:linear-gradient(135deg,rgba(255,93,118,.12),rgba(183,147,255,.08));
+  border:1px solid rgba(255,93,118,.30);
+  color:#ffd8df;
+  font-size:13px;
+  font-weight:750;
+}
+.romance-card-badge{
+  margin-left:auto;
+  margin-right:7px;
+  flex:0 0 auto;
+  font-size:10px;
+  font-weight:900;
+  color:#ffb8c5;
+  background:rgba(255,93,118,.10);
+  border:1px solid rgba(255,93,118,.30);
+  border-radius:999px;
+  padding:3px 7px;
+  white-space:nowrap;
+}
+.romance-policy-note{
+  margin:6px 0 9px;
+  padding:9px 10px;
+  border-radius:9px;
+  color:#ffd5dd;
+  background:rgba(255,93,118,.06);
+  border:1px solid rgba(255,93,118,.20);
+  font-size:12.5px;
+}
+.romance-gate{
+  margin:7px 0;
+  padding:9px 10px;
+  border-radius:10px;
+  border:1px solid;
+}
+.romance-gate.pre{
+  background:rgba(183,147,255,.07);
+  border-color:rgba(183,147,255,.25);
+}
+.romance-gate.confirm{
+  background:rgba(255,93,118,.09);
+  border-color:rgba(255,93,118,.32);
+}
+.romance-head{
+  font-weight:900;
+  font-size:12px;
+  margin-bottom:4px;
+}
+.romance-gate.pre .romance-head{color:#d3bbff}
+.romance-gate.confirm .romance-head{color:#ffb0c0}
+.romance-text{font-size:12.5px;color:#e5e7ed;line-height:1.55}
+.romance-top-chip{
+  grid-column:1/-1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,93,118,.10);
+  border:1px solid rgba(255,93,118,.28);
+  color:#ffd2da;
+  font-size:11px;
+  font-weight:900;
+}
+@media(max-width:560px){
+  .romance-card-badge{font-size:9px;padding:2px 5px;margin-right:2px}
+  .romance-top-chip{font-size:10px;padding:5px 8px}
+}
 </style>
 </head>
 <body>
 <header class="topbar">
 <button aria-label="목차 열기" class="menu-btn" id="menuBtn">☰</button>
-<div class="brand"><b>P5R</b> <span>한국어판 자유플레이 내비 V8</span></div>
+<div class="brand"><b>P5R</b> <span>한국어판 자유플레이 내비 V9</span></div>
 <div class="search"><input id="search" placeholder="날짜·캐릭터·정답 검색" type="search"/></div>
-</header><nav aria-label="주요 바로가기" class="primary-quick-nav"><a class="primary-nav-btn confidant-btn" href="#confidants"><span class="primary-nav-icon">💬</span><span><b>코옵</b><small>답안 · 리퀘스트 연동</small></span></a><a class="primary-nav-btn schedule-btn" href="#master-schedule"><span class="primary-nav-icon">🗓️</span><span><b>메인 스케줄</b><small>날짜별 통합 일정</small></span></a><a class="primary-nav-btn request-btn" href="#request-guide"><span class="primary-nav-icon">🚌</span><span><b>리퀘스트</b><small>발생 · 탐문 · 전투</small></span></a></nav>
+</header><nav aria-label="주요 바로가기" class="primary-quick-nav"><a class="primary-nav-btn confidant-btn" href="#confidants"><span class="primary-nav-icon">💬</span><span><b>코옵</b><small>답안 · 리퀘스트 연동</small></span></a><a class="primary-nav-btn schedule-btn" href="#master-schedule"><span class="primary-nav-icon">🗓️</span><span><b>메인 스케줄</b><small>날짜별 통합 일정</small></span></a><a class="primary-nav-btn request-btn" href="#request-guide"><span class="primary-nav-icon">🚌</span><span><b>리퀘스트</b><small>발생 · 탐문 · 전투</small></span></a><a class="romance-top-chip" href="#confidants">❤️ 전원 연인 루트</a></nav>
 <div class="layout">
 <aside class="sidebar" id="sidebar">
 <a href="#home">🏠 홈</a><a href="#confidants">💬 코옵 답안</a><a href="#master-schedule">🗓️ 통합 메인 스케줄</a><a href="#request-guide">🚌 리퀘스트 상세 공략</a><div class="side-persona-hint">🆓 = 동일 아르카나 불필요</div><a href="#deadlines">🚨 절대 마감</a><a href="#palaces">🏰 팰리스</a>
@@ -190,11 +263,11 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 </aside>
 <main class="content">
 <section class="hero" id="home">
-<h1>올스탯·돈 걱정 없는 <span>P5R</span><br/>한국어판 자유플레이 내비 V8</h1>
+<h1>올스탯·돈 걱정 없는 <span>P5R</span><br/>한국어판 자유플레이 내비 V9</h1>
 <p>스팀 리마스터 한국어판 기준. 스탯·돈 노가다는 버리고, <b>수업/시험 정답·코옵 답안·기간제 마감·팰리스 체크</b>만 남긴 버전.</p>
-<p class="small">※ V8: 리퀘스트 33종을 발생·시간대·정확한 탐문 동선·메멘토스 위치·전투/설득까지 상세화. 상단 리퀘스트 바로가기 추가.</p>
+<p class="small">※ V9: 연애 가능한 여성 코옵 10명을 전부 연인 루트로 고정. 성인 코옵의 사전 연애 플래그와 Rank 9 고백 선택을 카드 안에 직접 표시.</p>
 <div class="rule-grid"><div class="rule"><b>① 일정 자유</b>코옵·전투 순서는 네 마음대로. 단, 절대 마감은 지키기.</div><div class="rule"><b>② 질문은 바로 정답</b>수업·시험·퀴즈쇼·크로스워드를 날짜에 합침.</div><div class="rule"><b>③ 코옵 아르카나</b>일반 코옵은 같은 아르카나 페르소나를 슬롯에 소지하면 보너스. 🆓 표시 코옵은 소지 불필요.</div></div>
-</section><section id="confidants"><h2>💬 코옵 한국어 답안지</h2><div class="persona-legend"><span class="legend-needed">🔒 일반 코옵: 같은 아르카나 페르소나 <b>소지 권장</b></span><span class="legend-free">🆓 표시 코옵: 같은 아르카나 페르소나 <b>불필요</b></span></div><div class="v6-priority-note" style="margin:0 0 12px;padding:10px 12px;border:1px solid rgba(255,93,118,.28);border-radius:11px;background:rgba(255,93,118,.07);color:#d9dde6;font-size:13px;"><b>💬 가장 먼저 보는 영역</b> — 코옵 답안과 메멘토스 연동 리퀘스트를 우선 확인하고, 그다음 아래 메인 스케줄에서 날짜성 이벤트를 확인하면 됨.</div><p class="section-note">호감도 선택지 + 코옵을 막는 메멘토스 리퀘스트를 같은 카드 안에 표시. 주황색 「메멘토스 필수」가 보이면 해당 요청을 해결해야 다음 랭크 진행 가능.</p><div class="conf-grid"><details class="conf-card searchable" id="c0"><summary><span>연인 · 타카마키 안</span><span class="chev">⌄</span></summary><div class="conf-inner">
+</section><section id="confidants"><h2>💬 코옵 한국어 답안지</h2><div class="romance-global-banner">❤️ V9 연애 정책: 연애 가능한 10명은 전부 연인 루트로 진행. 💗 사전 플래그가 보이면 반드시 선택하고, ❤️ Rank 9 고백 선택은 연인 쪽으로 고정.</div><div class="persona-legend"><span class="legend-needed">🔒 일반 코옵: 같은 아르카나 페르소나 <b>소지 권장</b></span><span class="legend-free">🆓 표시 코옵: 같은 아르카나 페르소나 <b>불필요</b></span></div><div class="v6-priority-note" style="margin:0 0 12px;padding:10px 12px;border:1px solid rgba(255,93,118,.28);border-radius:11px;background:rgba(255,93,118,.07);color:#d9dde6;font-size:13px;"><b>💬 가장 먼저 보는 영역</b> — 코옵 답안과 메멘토스 연동 리퀘스트를 우선 확인하고, 그다음 아래 메인 스케줄에서 날짜성 이벤트를 확인하면 됨.</div><p class="section-note">호감도 선택지 + 코옵을 막는 메멘토스 리퀘스트를 같은 카드 안에 표시. 주황색 「메멘토스 필수」가 보이면 해당 요청을 해결해야 다음 랭크 진행 가능.</p><div class="conf-grid"><details class="conf-card searchable" id="c0"><summary><span>연인 · 타카마키 안</span><span class="romance-card-badge">❤️ 연인 고정</span><span class="chev">⌄</span></summary><div class="conf-inner"><div class="romance-policy-note">❤️ V9 기본 정책: 연인 루트 고정. 사전 연애 플래그는 없으므로 Rank 9의 ❤️ 선택을 반드시 고르면 됨.</div>
 <div class="conf-row"><div class="rank">1→2</div><div class="choices">좋은 친구네 / 그럴지도 몰라 / 모른 체 할 수 없었다 / 나도 도울게 / 맡겨 둬</div></div>
 <div class="conf-row"><div class="rank">2→3</div><div class="choices">그만할래 / 안은 괜찮아? / 자유로워서 좋겠네 / 그럴지도 몰라</div></div>
 <div class="conf-row"><div class="rank">3→4</div><div class="choices">왠지 알 것 같다 / 재밌네 / 듣고 싶다 / 괜찮겠네 / 열심히 해봐 / 매일 단련 중</div></div>
@@ -202,7 +275,7 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 <div class="conf-row"><div class="rank">5→6</div><div class="choices">그럴지도 모른다 / 열심히 하는 모습을 보여 주는 것 / 응원할게</div></div>
 <div class="conf-row"><div class="rank">6→7</div><div class="choices">안을 동경하니까 / 힘내 / 힘내</div></div>
 <div class="conf-row"><div class="rank">7→8</div><div class="choices">의지가 대단하네 / 틀림없이 있을 거다 / 분명히 기뻐할 거다 / 분명 그렇다</div></div>
-<div class="conf-row"><div class="rank">8→9</div><div class="choices">힘내라 / 당연하다  ※연인 분기 주의</div></div>
+<div class="romance-gate confirm" data-romance-key="ann-r9"><div class="romance-head">❤️ Rank 9 연인 확정</div><div class="romance-text">「내가 있잖아」 → 「좋아한다고 했다」를 선택. 이후는 호감도 높은 답으로 진행.</div></div><div class="conf-row"><div class="rank">8→9</div><div class="choices">힘내라 / 당연하다  ※연인 분기 주의</div></div>
 <div class="conf-row"><div class="rank">9→10</div><div class="choices">열심히 했다 / 곁에서 지켜볼게 / 물론이지</div></div>
 </div></details>
 <details class="conf-card searchable" id="c1"><summary><span>전차 · 사카모토 류지</span><span class="chev">⌄</span></summary><div class="conf-inner">
@@ -227,7 +300,7 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 <div class="conf-row"><div class="rank">8→9</div><div class="choices">아들에 대한 사랑? / 변했구나</div></div>
 <div class="conf-row"><div class="rank">9→10</div><div class="choices">선택지 무관</div></div>
 </div></details>
-<details class="conf-card searchable" id="c3"><summary><span>여법황 · 니지마 마코토</span><span class="chev">⌄</span></summary><div class="conf-inner">
+<details class="conf-card searchable" id="c3"><summary><span>여법황 · 니지마 마코토</span><span class="romance-card-badge">❤️ 연인 고정</span><span class="chev">⌄</span></summary><div class="conf-inner"><div class="romance-policy-note">❤️ V9 기본 정책: 연인 루트 고정. 사전 연애 플래그는 없으므로 Rank 9의 ❤️ 선택을 반드시 고르면 됨.</div>
 <div class="conf-row"><div class="rank">1→2</div><div class="choices">자세히 아네? / 위험할 뻔했다 / 맞아</div></div>
 <div class="conf-row"><div class="rank">2→3</div><div class="choices">오해다 / 앞으로 변하면 된다 / 친해질 수 있을 것 같네</div></div>
 <div class="conf-row"><div class="rank">3→4</div><div class="choices">마코토답지 않다 / 그걸 쓰는 이유라도? / 멋진 꿈이다</div></div>
@@ -235,10 +308,10 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 <div class="conf-row"><div class="rank">5→6</div><div class="choices">이것도 사랑의 형태다 / 데이트 중이라고 해</div></div>
 <div class="conf-row"><div class="rank">6→7</div><div class="choices">멋진 아버지다 / 멋지다 / 앞으로 생각하면 돼 / 언제 할래? / 맡겨 둬</div></div>
 <div class="conf-row"><div class="rank">7→8</div><div class="choices">아무한테나 하는 말이다 / 물론이지</div></div>
-<div class="conf-row"><div class="rank">8→9</div><div class="choices">위험해! / 도망치자 / 잘했어 / 단골가게다  ※연인 분기 주의</div></div>
+<div class="romance-gate confirm" data-romance-key="makoto-r9"><div class="romance-head">❤️ Rank 9 연인 확정</div><div class="romance-text">후반 선택에서 「여기에 상대가 있다」 → 「좋아한다」를 선택.</div></div><div class="conf-row"><div class="rank">8→9</div><div class="choices">위험해! / 도망치자 / 잘했어 / 단골가게다  ※연인 분기 주의</div></div>
 <div class="conf-row"><div class="rank">9→10</div><div class="choices">선택지 무관</div></div>
 </div></details>
-<details class="conf-card searchable" id="c4"><summary><span>은둔자 · 사쿠라 후타바</span><span class="chev">⌄</span></summary><div class="conf-inner">
+<details class="conf-card searchable" id="c4"><summary><span>은둔자 · 사쿠라 후타바</span><span class="romance-card-badge">❤️ 연인 고정</span><span class="chev">⌄</span></summary><div class="conf-inner"><div class="romance-policy-note">❤️ V9 기본 정책: 연인 루트 고정. 사전 연애 플래그는 없으므로 Rank 9의 ❤️ 선택을 반드시 고르면 됨.</div>
 <div class="conf-row"><div class="rank">1→2</div><div class="choices">편해서 좋겠다 / 같이 도전하자 / 분명 기뻐할 거다</div></div>
 <div class="conf-row"><div class="rank">2→3</div><div class="choices">찾으러 가려고 했어 / 다시 만나서 다행이다 / 함께 힘내자</div></div>
 <div class="conf-row"><div class="rank">3→4</div><div class="choices">같이 가자 / 오히려 귀엽다 / 천천히 하자</div></div>
@@ -246,10 +319,10 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 <div class="conf-row"><div class="rank">5→6</div><div class="choices">놀랐어? / 오해다 / 또 도망치게?</div></div>
 <div class="conf-row"><div class="rank">6→7</div><div class="choices">그런 부모도 있어? / 후타바를 위해서라면</div></div>
 <div class="quest-gate"><div class="gate-head"><span class="gate-badge">메멘토스 필수</span><span class="gate-title">「소녀를 좀먹는 무정한 부모」</span></div><div class="gate-text">은둔자 Rank 7 종료 시 발생. 완료해야 Rank 8 진행 가능. 보상: 하이 그로우 카드.</div></div><div class="conf-row"><div class="rank">7→8</div><div class="choices">훌륭하네 / 용기 냈구나 / 축하해</div></div>
-<div class="conf-row"><div class="rank">8→9</div><div class="choices">성장했구나 / 괜찮아? / 좋아 / 어떻게 말해?  ※연인 분기 주의</div></div>
+<div class="romance-gate confirm" data-romance-key="futaba-r9"><div class="romance-head">❤️ Rank 9 연인 확정</div><div class="romance-text">연애 분기에서 「후타바를 좋아하니까」를 선택.</div></div><div class="conf-row"><div class="rank">8→9</div><div class="choices">성장했구나 / 괜찮아? / 좋아 / 어떻게 말해?  ※연인 분기 주의</div></div>
 <div class="conf-row"><div class="rank">9→10</div><div class="choices">선택지 무관</div></div>
 </div></details>
-<details class="conf-card searchable" id="c5"><summary><span>여황제 · 오쿠무라 하루</span><span class="chev">⌄</span></summary><div class="conf-inner">
+<details class="conf-card searchable" id="c5"><summary><span>여황제 · 오쿠무라 하루</span><span class="romance-card-badge">❤️ 연인 고정</span><span class="chev">⌄</span></summary><div class="conf-inner"><div class="romance-policy-note">❤️ V9 기본 정책: 연인 루트 고정. 사전 연애 플래그는 없으므로 Rank 9의 ❤️ 선택을 반드시 고르면 됨.</div>
 <div class="conf-row"><div class="rank">1→2</div><div class="choices">농장 경영하려고? / 좀 수상하네 / 어려운 문제네 / 보석 멜론</div></div>
 <div class="conf-row"><div class="rank">2→3</div><div class="choices">안 들키면 된다 / 가고 싶지 않다 / 없다 / 잘 빠져나왔네</div></div>
 <div class="conf-row"><div class="rank">3→4</div><div class="choices">재료가 좋은가 보네 / 시켜만 줘 / 배설물?! / 부탁해볼까 / 모르겠다 / 또 커피 마시러 가자</div></div>
@@ -257,7 +330,7 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 <div class="conf-row"><div class="rank">5→6</div><div class="choices">배울 게 많네 / 몰랐다 / 커피라서 시커먼가? / 하루가 하기에 달렸다 / 얘기라면 언제든 들을게</div></div>
 <div class="conf-row"><div class="rank">6→7</div><div class="choices">하루는 어떻게 하고 싶어? / 타카쿠라 씨는? / 좋은 마음가짐이다 / 응원하고 있다</div></div>
 <div class="conf-row"><div class="rank">7→8</div><div class="choices">흙? / 분명 전해질 거야 / 응원할게</div></div>
-<div class="conf-row"><div class="rank">8→9</div><div class="choices">큰맘 먹고 뛰어들어봐 / 하루가 노력한 거다 / 벌써 보고 싶다  ※연인 분기 주의</div></div>
+<div class="romance-gate confirm" data-romance-key="haru-r9"><div class="romance-head">❤️ Rank 9 연인 확정</div><div class="romance-text">연애 분기에서 「나도 좋아한다」를 선택.</div></div><div class="conf-row"><div class="rank">8→9</div><div class="choices">큰맘 먹고 뛰어들어봐 / 하루가 노력한 거다 / 벌써 보고 싶다  ※연인 분기 주의</div></div>
 <div class="conf-row"><div class="rank">9→10</div><div class="choices">선택지 무관</div></div>
 </div></details>
 <details class="conf-card searchable" id="c6"><summary><span>정의 · 아케치 고로</span><span class="chev">⌄</span></summary><div class="conf-inner">
@@ -270,7 +343,7 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 <div class="conf-row"><div class="rank">7→8</div><div class="choices">지지 않아 / 나도 그래</div></div>
 <div class="conf-row important"><div class="rank">중요</div><div class="choices">11/17까지 Rank 8. Rank 7~8에서 라이벌 의식 선택을 유지하면 로열 추가 장면을 놓치기 어렵다.</div></div>
 </div></details>
-<details class="conf-card searchable" id="c7"><summary><span>신념 · 요시자와 카스미</span><span class="chev">⌄</span></summary><div class="conf-inner">
+<details class="conf-card searchable" id="c7"><summary><span>신념 · 요시자와 카스미</span><span class="romance-card-badge">❤️ 연인 고정</span><span class="chev">⌄</span></summary><div class="conf-inner"><div class="romance-policy-note">❤️ V9 기본 정책: 연인 루트 고정. 사전 연애 플래그는 없으므로 Rank 9의 ❤️ 선택을 반드시 고르면 됨.</div>
 <div class="conf-row"><div class="rank">1→2</div><div class="choices">이제 시작이야 / 다음에 해도 괜찮아 / 역시</div></div>
 <div class="conf-row"><div class="rank">2→3</div><div class="choices">도시락 만들기? / 고마워 / 그게 일인분? / 개성 있는 도시락이야 / 또 만들어줘</div></div>
 <div class="conf-row"><div class="rank">3→4</div><div class="choices">쇼핑하게? / 세련됐네 / 이제 시작이지 / 좋은 판단이야 / 누구나 마찬가지야 / 함께 되찾자 / 그거 다행이다</div></div>
@@ -278,7 +351,7 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 <div class="conf-row"><div class="rank">5→6</div><div class="choices">전화: 더는 도망치지 마</div></div>
 <div class="conf-row"><div class="rank">6→7</div><div class="choices">괜찮아? / 그렇지 않아 / 물론이지 / 힘들면 불타는 타입이다</div></div>
 <div class="conf-row"><div class="rank">7→8</div><div class="choices">스미레에게 말을 건다 / 약해지지 마 / 잘 어울려 / 한 걸음 나아갔구나 / 빈티지 숍</div></div>
-<div class="conf-row"><div class="rank">8→9</div><div class="choices">딱히 상관없다 / 보러 갈게 / 물론이다 / 분명 그럴 거다  ※연인 분기 주의</div></div>
+<div class="romance-gate confirm" data-romance-key="kasumi-r9"><div class="romance-head">❤️ 3학기 Rank 9 연인 확정</div><div class="romance-text">고백에 「나도 좋아해」를 선택. 12월까지 Rank 5 → 3학기 Rank 6~9 진행 후 선택.</div></div><div class="conf-row"><div class="rank">8→9</div><div class="choices">딱히 상관없다 / 보러 갈게 / 물론이다 / 분명 그럴 거다  ※연인 분기 주의</div></div>
 <div class="conf-row important"><div class="rank">중요</div><div class="choices">12/22까지 Rank 5. 이후 3학기에서 Rank 6~10 진행.</div></div>
 </div></details>
 <details class="conf-card searchable" id="c8"><summary><span>법황 · 사쿠라 소지로</span><span class="chev">⌄</span></summary><div class="conf-inner">
@@ -292,16 +365,16 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 <div class="quest-gate"><div class="gate-head"><span class="gate-badge">메멘토스 필수</span><span class="gate-title">「유산을 노리는 나쁜 외삼촌」</span></div><div class="gate-text">법황 Rank 8 후 발생. 후타바와 대화해 리퀘스트를 시작하고 완료해야 Rank 9 진행 가능. 주인공 단독 전투.</div></div><div class="conf-row"><div class="rank">8→9</div><div class="choices">전혀 없어요 / 좋은 딸을 뒀군요 / 이미 부녀 사이였어요</div></div>
 <div class="conf-row"><div class="rank">9→10</div><div class="choices">선택지 무관</div></div>
 </div></details>
-<details class="conf-card searchable" id="c9"><summary><span>사신 · 타케미 타에</span><span class="chev">⌄</span></summary><div class="conf-inner">
+<details class="conf-card searchable" id="c9"><summary><span>사신 · 타케미 타에</span><span class="romance-card-badge">❤️ 연인 고정</span><span class="chev">⌄</span></summary><div class="conf-inner"><div class="romance-policy-note">❤️ V9 기본 정책: 연인 루트 고정. 성인 코옵은 사전 플래그가 있으므로 아래 💗 표시 선택지를 모두 고르는 보수적 루트로 진행.</div>
 <div class="conf-row"><div class="rank">1→2</div><div class="choices">마음에 병이 있다 / 동감이에요 / 뭔가에 눈을 뜰 것 같아요</div></div>
 <div class="conf-row"><div class="rank">2→3</div><div class="choices">상관없어요 / 당연하죠</div></div>
 <div class="conf-row"><div class="rank">3→4</div><div class="choices">타케미 선생님이 고쳐줄 거야 / 기뻐 보이네요 / 반성하고 있습니다</div></div>
 <div class="conf-row"><div class="rank">4→5</div><div class="choices">다행이다 / 미와의 일?</div></div>
 <div class="conf-row"><div class="rank">5→6</div><div class="choices">어울리는 것 같은데요 / 맡겨주세요</div></div>
-<div class="conf-row"><div class="rank">6→7</div><div class="choices">타케미 씨는 좋은 의사다 / 지금은 좀 쉬어요 / 가끔은 좋다</div></div>
-<div class="conf-row"><div class="rank">7 진입</div><div class="choices">여기 있잖아요</div></div>
-<div class="quest-gate"><div class="gate-head"><span class="gate-badge">메멘토스 필수</span><span class="gate-title">「의사 항쟁: 사라진 치료법」</span></div><div class="gate-text">사신 Rank 7 후 발생. 완료해야 Rank 8 진행 가능.</div></div><div class="conf-row"><div class="rank">7→8</div><div class="choices">신약을 완성시키죠 / 미와를 위해서라면 / 응원하고 있어요</div></div>
-<div class="conf-row"><div class="rank">8→9</div><div class="choices">힘들었어요 / 그쪽이야말로  ※연인 분기 주의</div></div>
+<div class="romance-gate pre" data-romance-key="takemi-pre1"><div class="romance-head">💗 사전 연애 플래그 1</div><div class="romance-text">마지막 선택에서 「얼마든 환영이에요」를 선택.</div></div><div class="conf-row"><div class="rank">6→7</div><div class="choices">타케미 씨는 좋은 의사다 / 지금은 좀 쉬어요 / 가끔은 좋다</div></div>
+<div class="romance-gate pre" data-romance-key="takemi-pre2"><div class="romance-head">💗 사전 연애 플래그 2</div><div class="romance-text">리퀘스트 발생 전 대화에서 「여기 있잖아요」를 선택.</div></div><div class="conf-row"><div class="rank">7 진입</div><div class="choices">여기 있잖아요</div></div>
+<div class="quest-gate"><div class="gate-head"><span class="gate-badge">메멘토스 필수</span><span class="gate-title">「의사 항쟁: 사라진 치료법」</span></div><div class="gate-text">사신 Rank 7 후 발생. 완료해야 Rank 8 진행 가능.</div></div><div class="romance-gate pre" data-romance-key="takemi-pre3"><div class="romance-head">💗 사전 연애 플래그 3</div><div class="romance-text">리퀘스트 클리어 후 Rank 8 진행에서 「미와를 위해서라면」을 선택.</div></div><div class="conf-row"><div class="rank">7→8</div><div class="choices">신약을 완성시키죠 / 미와를 위해서라면 / 응원하고 있어요</div></div>
+<div class="romance-gate confirm" data-romance-key="takemi-r9"><div class="romance-head">❤️ Rank 9 연인 확정</div><div class="romance-text">「선생님을 보고 싶어서」 → 「좋아해요」 → 「말 돌리지 마요」를 선택.</div></div><div class="conf-row"><div class="rank">8→9</div><div class="choices">힘들었어요 / 그쪽이야말로  ※연인 분기 주의</div></div>
 <div class="conf-row"><div class="rank">9→10</div><div class="choices">선택지 무관</div></div>
 </div></details>
 <details class="conf-card searchable" id="c10"><summary><span>고문관 · 마루키 타쿠토</span><span class="chev">⌄</span></summary><div class="conf-inner">
@@ -315,29 +388,29 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 <div class="conf-row"><div class="rank">8→9</div><div class="choices">외로워지겠네요</div></div>
 <div class="conf-row important"><div class="rank">중요</div><div class="choices">11/17까지 Rank 9. Rank 10은 11/18 스토리 자동. 3학기 진입의 핵심 조건.</div></div>
 </div></details>
-<details class="conf-card searchable" id="c11"><summary><span>절제 · 카와카미 사다요</span><span class="chev">⌄</span></summary><div class="conf-inner">
+<details class="conf-card searchable" id="c11"><summary><span>절제 · 카와카미 사다요</span><span class="romance-card-badge">❤️ 연인 고정</span><span class="chev">⌄</span></summary><div class="conf-inner"><div class="romance-policy-note">❤️ V9 기본 정책: 연인 루트 고정. 성인 코옵은 사전 플래그가 있으므로 아래 💗 표시 선택지를 모두 고르는 보수적 루트로 진행.</div>
 <div class="conf-row"><div class="rank">1→2</div><div class="choices">마음에 찔려요 / 그럴 리가요 / 영업하는 거예요?</div></div>
 <div class="conf-row"><div class="rank">2→3</div><div class="choices">그렇네요 / 계속 지명할게요 / 감사합니다</div></div>
 <div class="conf-row"><div class="rank">3→4</div><div class="choices">실례네요 / 자신을 소중히 여기셔야죠?</div></div>
 <div class="conf-row"><div class="rank">4→5</div><div class="choices">지금은 주인님이에요 / 너무하네요 / 같이 먹을까요?</div></div>
 <div class="conf-row"><div class="rank">5→6</div><div class="choices">조금 쉬세요 / 괜찮아요? / 선생님은 괜찮으세요?</div></div>
-<div class="conf-row"><div class="rank">6→7</div><div class="choices">돈 주지 마세요 / 다시 생각해 봐요</div></div>
+<div class="romance-gate pre" data-romance-key="kawakami-pre"><div class="romance-head">💗 사전 연애 플래그</div><div class="romance-text">대화 중 「다시 생각해 봐요」를 선택.</div></div><div class="conf-row"><div class="rank">6→7</div><div class="choices">돈 주지 마세요 / 다시 생각해 봐요</div></div>
 <div class="conf-row"><div class="rank">7→8</div><div class="choices">그게 선생님이 구한 답이에요? / 스스로 내린 결정이라면요 / 자신감을 가져요 / 제가 선생님을 지켜주고 싶어요 / 천만에요</div></div>
-<div class="quest-gate"><div class="gate-head"><span class="gate-badge">메멘토스 필수</span><span class="gate-title">「고민하는 은사님은 메이드 인 헬」</span></div><div class="gate-text">절제 Rank 8 후 학교 이벤트로 발생. 완료해야 Rank 9 진행 가능. 방학 중 Rank 8을 찍었다면 다음 등교일까지 기다림.</div></div><div class="conf-row"><div class="rank">8→9</div><div class="choices">그렇지 않아요 / 아쉬워요 / 또 오셨으면 좋겠어요  ※연인 분기 주의</div></div>
+<div class="quest-gate"><div class="gate-head"><span class="gate-badge">메멘토스 필수</span><span class="gate-title">「고민하는 은사님은 메이드 인 헬」</span></div><div class="gate-text">절제 Rank 8 후 학교 이벤트로 발생. 완료해야 Rank 9 진행 가능. 방학 중 Rank 8을 찍었다면 다음 등교일까지 기다림.</div></div><div class="romance-gate confirm" data-romance-key="kawakami-r9"><div class="romance-head">❤️ Rank 9 연인 확정</div><div class="romance-text">「또 오셨으면 좋겠어요」 → 「착각이 아니에요」 → 「남자와 여자죠」를 선택.</div></div><div class="conf-row"><div class="rank">8→9</div><div class="choices">그렇지 않아요 / 아쉬워요 / 또 오셨으면 좋겠어요  ※연인 분기 주의</div></div>
 <div class="conf-row"><div class="rank">9→10</div><div class="choices">선택지 무관</div></div>
 </div></details>
-<details class="conf-card searchable" id="c12"><summary><span>운명 · 미후네 치하야</span><span class="chev">⌄</span></summary><div class="conf-inner"><div class="quest-gate open"><div class="gate-head"><span class="gate-badge">코옵 개방 필수</span><span class="gate-title">「폭력을 쓰는 남자친구의 사정」</span></div><div class="gate-text">치하야에게 여러 번 상담 후 발생. 이 리퀘스트를 완료해야 운명 코옵 자체가 시작됨.</div></div>
+<details class="conf-card searchable" id="c12"><summary><span>운명 · 미후네 치하야</span><span class="romance-card-badge">❤️ 연인 고정</span><span class="chev">⌄</span></summary><div class="conf-inner"><div class="romance-policy-note">❤️ V9 기본 정책: 연인 루트 고정. 성인 코옵은 사전 플래그가 있으므로 아래 💗 표시 선택지를 모두 고르는 보수적 루트로 진행.</div><div class="quest-gate open"><div class="gate-head"><span class="gate-badge">코옵 개방 필수</span><span class="gate-title">「폭력을 쓰는 남자친구의 사정」</span></div><div class="gate-text">치하야에게 여러 번 상담 후 발생. 이 리퀘스트를 완료해야 운명 코옵 자체가 시작됨.</div></div>
 <div class="conf-row"><div class="rank">1→2</div><div class="choices">바뀌는 게 좋아 / 맞았다</div></div>
 <div class="conf-row"><div class="rank">2→3</div><div class="choices">선택지 무관</div></div>
 <div class="conf-row"><div class="rank">3→4</div><div class="choices">자기 자신을 믿어 / 대단한 일도 아닌데</div></div>
 <div class="conf-row"><div class="rank">4→5</div><div class="choices">노력가다</div></div>
-<div class="conf-row"><div class="rank">5→6</div><div class="choices">치하야는 치하야다 / 자신과 맞서라</div></div>
+<div class="romance-gate pre" data-romance-key="chihaya-pre1"><div class="romance-head">💗 사전 연애 플래그 1</div><div class="romance-text">대화 중 「치하야는 치하야다」를 선택.</div></div><div class="conf-row"><div class="rank">5→6</div><div class="choices">치하야는 치하야다 / 자신과 맞서라</div></div>
 <div class="conf-row"><div class="rank">6→7</div><div class="choices">마음은 이해해 / 조심해</div></div>
-<div class="quest-gate"><div class="gate-head"><span class="gate-badge">메멘토스 필수</span><span class="gate-title">「파헤쳐라! 영능력자의 트릭」</span></div><div class="gate-text">운명 Rank 7 후 치하야와 다시 만나 리퀘스트를 받고, 완료해야 Rank 8 진행 가능.</div></div><div class="conf-row"><div class="rank">7→8</div><div class="choices">알고 있었다 / 다행이다 / 괜찮다 / 치하야 자신의 의지다</div></div>
-<div class="conf-row"><div class="rank">8→9</div><div class="choices">운명은 바뀐다 / 나도 듣고 싶었다  ※연인 분기 주의</div></div>
+<div class="quest-gate"><div class="gate-head"><span class="gate-badge">메멘토스 필수</span><span class="gate-title">「파헤쳐라! 영능력자의 트릭」</span></div><div class="gate-text">운명 Rank 7 후 치하야와 다시 만나 리퀘스트를 받고, 완료해야 Rank 8 진행 가능.</div></div><div class="romance-gate pre" data-romance-key="chihaya-pre2"><div class="romance-head">💗 사전 연애 플래그 2</div><div class="romance-text">리퀘스트 클리어 후 Rank 8 진행에서 「괜찮다」를 선택.</div></div><div class="conf-row"><div class="rank">7→8</div><div class="choices">알고 있었다 / 다행이다 / 괜찮다 / 치하야 자신의 의지다</div></div>
+<div class="romance-gate confirm" data-romance-key="chihaya-r9"><div class="romance-head">❤️ Rank 9 연인 확정</div><div class="romance-text">「치하야가 보고 싶어서」를 선택.</div></div><div class="conf-row"><div class="rank">8→9</div><div class="choices">운명은 바뀐다 / 나도 듣고 싶었다  ※연인 분기 주의</div></div>
 <div class="conf-row"><div class="rank">9→10</div><div class="choices">선택지 무관</div></div>
 </div></details>
-<details class="conf-card searchable" id="c13"><summary><span>별 · 토고 히후미</span><span class="chev">⌄</span></summary><div class="conf-inner">
+<details class="conf-card searchable" id="c13"><summary><span>별 · 토고 히후미</span><span class="romance-card-badge">❤️ 연인 고정</span><span class="chev">⌄</span></summary><div class="conf-inner"><div class="romance-policy-note">❤️ V9 기본 정책: 연인 루트 고정. 사전 연애 플래그는 없으므로 Rank 9의 ❤️ 선택을 반드시 고르면 됨.</div>
 <div class="conf-row"><div class="rank">1→2</div><div class="choices">재미있다 / 싫은 거야?</div></div>
 <div class="conf-row"><div class="rank">2→3</div><div class="choices">틀린 말은 아니잖아 / 힘들어? / 덤벼라</div></div>
 <div class="conf-row"><div class="rank">3→4</div><div class="choices">신경 안 쓴다 / 멋있다 / 나야말로</div></div>
@@ -346,19 +419,19 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 <div class="conf-row"><div class="rank">6→7</div><div class="choices">승부는 운이야 / 믿고 있어</div></div>
 <div class="conf-row"><div class="rank">7 진입</div><div class="choices">그런 전략이 먹힐 리가</div></div>
 <div class="quest-gate"><div class="gate-head"><span class="gate-badge">메멘토스 필수</span><span class="gate-title">「매니저 엄마를 향한 승부수」</span></div><div class="gate-text">별 Rank 7 후 후속 이벤트에서 발생. 메멘토스에서 완료해야 Rank 8 진행 가능.</div></div><div class="conf-row"><div class="rank">7→8</div><div class="choices">그럴지도 모르지 / 응원은 할 거다</div></div>
-<div class="conf-row"><div class="rank">8→9</div><div class="choices">한 수 보여줘 / 왕다운 결정이었어 / 히후미를 위해서라면  ※연인 분기 주의</div></div>
+<div class="romance-gate confirm" data-romance-key="hifumi-r9"><div class="romance-head">❤️ Rank 9 연인 확정</div><div class="romance-text">「계속 옆에 있고 싶어」 → 「나랑 사귀자」를 선택.</div></div><div class="conf-row"><div class="rank">8→9</div><div class="choices">한 수 보여줘 / 왕다운 결정이었어 / 히후미를 위해서라면  ※연인 분기 주의</div></div>
 <div class="conf-row"><div class="rank">9→10</div><div class="choices">선택지 무관</div></div>
 </div></details>
-<details class="conf-card searchable" id="c14"><summary><span>악마 · 오야 이치코</span><span class="chev">⌄</span></summary><div class="conf-inner">
+<details class="conf-card searchable" id="c14"><summary><span>악마 · 오야 이치코</span><span class="romance-card-badge">❤️ 연인 고정</span><span class="chev">⌄</span></summary><div class="conf-inner"><div class="romance-policy-note">❤️ V9 기본 정책: 연인 루트 고정. 성인 코옵은 사전 플래그가 있으므로 아래 💗 표시 선택지를 모두 고르는 보수적 루트로 진행.</div>
 <div class="conf-row"><div class="rank">1→2</div><div class="choices">미시마라면 / 기사 때문에</div></div>
 <div class="conf-row"><div class="rank">2→3</div><div class="choices">억측이군요 / 누명?</div></div>
 <div class="conf-row"><div class="rank">3→4</div><div class="choices">사귑니다 / 맡겨 둬요</div></div>
 <div class="conf-row"><div class="rank">4→5</div><div class="choices">용서할 수 없군 / 신경 안 써요</div></div>
 <div class="conf-row"><div class="rank">5→6</div><div class="choices">미운털이 박혔군요 / 파트너를 믿어야죠 / 그 결심이에요 / 또 가지고 오죠</div></div>
-<div class="conf-row"><div class="rank">6→7</div><div class="choices">도발에 넘어가지 마라 / 그게 오야 씨의 매력 / 바로 그거예요</div></div>
+<div class="romance-gate pre" data-romance-key="ohya-pre1"><div class="romance-head">💗 사전 연애 플래그 1</div><div class="romance-text">대화 중 「그게 오야 씨의 매력」을 선택.</div></div><div class="conf-row"><div class="rank">6→7</div><div class="choices">도발에 넘어가지 마라 / 그게 오야 씨의 매력 / 바로 그거예요</div></div>
 <div class="conf-row"><div class="rank">7 진입</div><div class="choices">피곤해 보여요</div></div>
-<div class="quest-gate"><div class="gate-head"><span class="gate-badge">메멘토스 필수</span><span class="gate-title">「탄로! 악덕 상사의 횡포」</span></div><div class="gate-text">악마 Rank 7 후 발생. 완료해야 Rank 8 진행 가능.</div></div><div class="conf-row"><div class="rank">7→8</div><div class="choices">오야 씨답지 않아요 / 굿 럭</div></div>
-<div class="conf-row"><div class="rank">8→9</div><div class="choices">설마 포기하려고? / 혼자 둘 순 없어요  ※연인 분기 주의</div></div>
+<div class="quest-gate"><div class="gate-head"><span class="gate-badge">메멘토스 필수</span><span class="gate-title">「탄로! 악덕 상사의 횡포」</span></div><div class="gate-text">악마 Rank 7 후 발생. 완료해야 Rank 8 진행 가능.</div></div><div class="romance-gate pre" data-romance-key="ohya-pre2"><div class="romance-head">💗 사전 연애 플래그 2</div><div class="romance-text">리퀘스트 클리어 후 대화에서 「같이 만나러 가죠」를 선택.</div></div><div class="conf-row"><div class="rank">7→8</div><div class="choices">오야 씨답지 않아요 / 굿 럭</div></div>
+<div class="romance-gate confirm" data-romance-key="ohya-r9"><div class="romance-head">❤️ Rank 9 연인 확정</div><div class="romance-text">「혼자 둘 수 없어요」 → 「진심이었어요」 → 「이치코를 좋아해요」를 선택.</div></div><div class="conf-row"><div class="rank">8→9</div><div class="choices">설마 포기하려고? / 혼자 둘 순 없어요  ※연인 분기 주의</div></div>
 <div class="conf-row"><div class="rank">9→10</div><div class="choices">선택지 무관</div></div>
 </div></details>
 <details class="conf-card searchable" id="c15"><summary><span>사형수 · 이와이 무네히사</span><span class="chev">⌄</span></summary><div class="conf-inner">
