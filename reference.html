@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>P5R V10 자료실</title>
+<title>P5R V11 자료실</title>
 <style>
 :root{--bg:#0b0c10;--panel:#14161d;--text:#f4f5f7;--muted:#a8adbb;--red:#e6203c;--red2:#ff3b54;--line:#2a2e39;--gold:#f4c44e;--green:#35d07f;--blue:#5fb2ff;--purple:#b793ff;--orange:#ff9f43;--shadow:0 12px 30px rgba(0,0,0,.28)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#08090c,#10121a 28%,#0b0c10);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}
@@ -251,26 +251,66 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 .primary-quick-nav{grid-template-columns:repeat(3,minmax(0,1fr))}
 #strength-helper{scroll-margin-top:145px}
 
+
+#twins-outings{scroll-margin-top:145px}
+.twins-tip{
+  display:grid;gap:4px;margin:10px 0 12px;padding:11px 12px;border-radius:11px;
+  background:rgba(183,147,255,.07);border:1px solid rgba(183,147,255,.25);
+  color:#d9dce6;font-size:12.5px;
+}
+.twins-tip b{color:#d7c1ff}
+.twins-shortcuts{
+  margin-top:10px;padding:11px 12px;border-radius:11px;
+  background:rgba(244,196,78,.06);border:1px solid rgba(244,196,78,.22);
+  color:#e4e0d5;font-size:12.5px;
+}
 </style>
 </head>
 <body>
 <header class="topbar">
 <button aria-label="목차 열기" class="menu-btn" id="menuBtn">☰</button>
-<div class="brand"><b>P5R</b> <span>P5R V10 자료실</span></div>
+<div class="brand"><b>P5R</b> <span>P5R V11 자료실</span></div>
 <div class="search"><input id="search" placeholder="날짜·캐릭터·정답 검색" type="search"/></div>
-</header><nav aria-label="주요 바로가기" class="primary-quick-nav"><a class="primary-nav-btn confidant-btn" href="index.html"><span class="primary-nav-icon">⬅️</span><span><b>메인</b><small>코옵 · 달력 · 리퀘스트</small></span></a><a class="primary-nav-btn schedule-btn" href="#strength-helper"><span class="primary-nav-icon">👯</span><span><b>힘 코옵</b><small>상세 합체 공략</small></span></a><a class="primary-nav-btn request-btn" href="#fusion"><span class="primary-nav-icon">⚗️</span><span><b>합체표</b><small>일반 · 특수 합체</small></span></a></nav>
+</header><nav aria-label="주요 바로가기" class="primary-quick-nav"><a class="primary-nav-btn confidant-btn" href="index.html"><span class="primary-nav-icon">⬅️</span><span><b>메인</b><small>코옵 · 달력 · 리퀘스트</small></span></a><a class="primary-nav-btn schedule-btn" href="#strength-helper"><span class="primary-nav-icon">👯</span><span><b>힘 코옵</b><small>상세 합체 공략</small></span></a><a class="primary-nav-btn request-btn" href="#twins-outings"><span class="primary-nav-icon">🎟️</span><span><b>쌍둥이 외출</b><small>기간 · 장소 · 보상</small></span></a></nav>
 <div class="layout">
-<aside class="sidebar" id="sidebar"><a href="index.html">⬅️ 메인으로</a><a href="#strength-helper">👯 힘 코옵 상세 합체</a><a href="#fusion">⚗️ 합체표</a><a href="#deadlines">🚨 절대 마감</a><a href="#palaces">🏰 팰리스</a><a href="#calendar">📅 학교/시험 정답</a><a href="#unlock">🔓 코옵 개방</a><a href="#abilities">🎁 코옵 보상</a><a href="#requests">🚌 메멘토스 목록</a><a href="#shops">🛍️ 상점/해금</a><a href="#compendium">📘 전서</a><a href="#skillcards">🃏 스킬카드</a><a href="#jazz">🎷 재즈</a><a href="#ending">🧭 엔딩</a><a href="#sources">📚 기준 자료</a></aside>
+<aside class="sidebar" id="sidebar"><a href="index.html">⬅️ 메인으로</a><a href="#strength-helper">👯 힘 코옵 상세 합체</a><a href="#twins-outings">👯 쌍둥이 특별 외출</a><a href="#fusion">⚗️ 합체표</a><a href="#deadlines">🚨 절대 마감</a><a href="#palaces">🏰 팰리스</a><a href="#calendar">📅 학교/시험 정답</a><a href="#unlock">🔓 코옵 개방</a><a href="#abilities">🎁 코옵 보상</a><a href="#requests">🚌 메멘토스 목록</a><a href="#shops">🛍️ 상점/해금</a><a href="#compendium">📘 전서</a><a href="#skillcards">🃏 스킬카드</a><a href="#jazz">🎷 재즈</a><a href="#ending">🧭 엔딩</a><a href="#sources">📚 기준 자료</a></aside>
 <main class="content">
 <section class="hero" id="home">
-<h1>P5R <span>V10</span><br/>힘 코옵 · 합체 · 전서 · 보조자료</h1>
+<h1>P5R <span>V11</span><br/>힘 코옵 · 쌍둥이 외출 · 합체 · 전서</h1>
 <p>스팀 리마스터 한국어판 기준. 스탯·돈 노가다는 버리고, <b>수업/시험 정답·코옵 답안·기간제 마감·팰리스 체크</b>만 남긴 버전.</p>
-<p class="small">※ V10 자료실: 메인 페이지에서 뺀 참고 자료를 한곳에 모으고, 힘 코옵 상세 합체 공략을 가장 위에 배치.</p>
+<p class="small">※ V11 자료실: 힘 코옵 상세 합체 공략 바로 아래에 쌍둥이 특별 외출 일정/조건/보상표 추가.</p>
 <div class="rule-grid"><div class="rule"><b>① 일정 자유</b>코옵·전투 순서는 네 마음대로. 단, 절대 마감은 지키기.</div><div class="rule"><b>② 질문은 바로 정답</b>수업·시험·퀴즈쇼·크로스워드를 날짜에 합침.</div><div class="rule"><b>③ 코옵 아르카나</b>일반 코옵은 같은 아르카나 페르소나를 슬롯에 소지하면 보너스. 🆓 표시 코옵은 소지 불필요.</div></div>
 </section><section id="strength-helper">
 <h2>👯 힘 코옵 상세 합체 공략</h2>
 <p class="section-note">Rank 1~10 요구 페르소나·요구 스킬·가장 간단한 제작 루트를 최상단에서 바로 확인.</p>
 <div class="table-wrap"><table><thead><tr><th>Rank</th><th>요구 페르소나</th><th>요구 스킬</th><th>간단 루트</th><th>메모</th></tr></thead><tbody><tr><td>1</td><td><b>잭 프로스트</b></td><td>마하부흐</td><td>잭 프로스트를 Lv12까지 올리기</td><td>가장 간단</td></tr><tr><td>2</td><td><b>아메노우즈메</b></td><td>프레이</td><td>주작 + 베리스 → 아메노우즈메, 프레이 계승</td><td></td></tr><tr><td>3</td><td><b>플라로우스</b></td><td>타루카쟈</td><td>베리스 + 엘리고르 + 오로바스 → 플라로우스, 엘리고르의 타루카쟈 계승</td><td>집단 참수형</td></tr><tr><td>4</td><td><b>봉황</b></td><td>카운터</td><td>야크시니 + 켈피 → 봉황, 카운터 계승</td><td></td></tr><tr><td>5</td><td><b>세탄타</b></td><td>라쿠카쟈</td><td>라미아 + 실키 → 세탄타, 라쿠카쟈 계승</td><td></td></tr><tr><td>6</td><td><b>네코쇼군</b></td><td>데카쟈</td><td>안즈를 Lv28까지 → 코다마 + 스다마 + 안즈, 데카쟈 계승</td><td>집단 참수형</td></tr><tr><td>7</td><td><b>라케시스</b></td><td>테트라쟈</td><td>클로토에서 테트라쟈 확보 → 클로토 + 리젠트 등으로 라케시스에 계승</td><td>DLC/레벨에 따라 결과 변동 가능</td></tr><tr><td>8</td><td><b>헤카톤케일</b></td><td>마하스쿤다</td><td>릴림을 Lv34까지 → 릴림 + 안즈 → 헤카톤케일, 마하스쿤다 계승</td><td></td></tr><tr><td>9</td><td><b>벅스</b></td><td>사마리캄</td><td>하리티를 Lv41까지 → 픽시 + 피샤차 + 하리티, 사마리캄 계승</td><td>넷스토킹녀 리퀘스트 선행</td></tr><tr><td>10</td><td><b>세트</b></td><td>하이퍼 카운터</td><td>다키니 Lv52에서 하이퍼 카운터 → 호루스에 계승 → 이시스 + 토트 + 아누비스 + 호루스 → 세트</td><td>하이퍼 카운터 카드 사용도 가능</td></tr></tbody></table></div>
+</section><section id="twins-outings">
+<h2>👯 쌍둥이 특별 외출 공략</h2>
+<p class="section-note">
+    힘 코옵 Rank와는 별개지만, 시간 소비형 이벤트로 스킬카드를 준다.
+    <b>빅뱅 버거부터 순서대로 처리</b>하는 게 가장 안전하고, 미우라 해변·우에노 미술관은 기간 제한 때문에 특히 주의.
+  </p>
+<div class="twins-tip">
+<b>운영 요령</b>
+<span>벨벳 룸 입구 밖의 저스틴에게 말 걸기 → 외출 장소 선택. 장소를 먼저 해금/방문해야 뜨는 일정이 일부 있음.</span>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>가능 기간</th><th>장소</th><th>선행 조건</th><th>보상 카드</th><th>메모</th></tr>
+</thead>
+<tbody>
+<tr><td>6/6~12/19</td><td><b>시부야 · 빅뱅 버거</b></td><td>없음</td><td>마하라기 / 마하부흐</td><td>저스틴에게 말 걸어 외출. 첫 이벤트. 피클 대화는 「별미야」 계열이 호감도 보너스.</td></tr><tr><td>6/7~12/19</td><td><b>시부야 · 영화관</b></td><td>영화관을 한 번 이상 이용해 둠</td><td>프레이 / 사이</td><td>장소 선행 방문 필요. 쌍둥이 외출 자체는 힘 Rank에 영향 없음.</td></tr><tr><td>6/15~12/19</td><td><b>시부야 · 트레이닝 짐</b></td><td>짐 장소 해금/방문</td><td>어드바이스 / 카운터</td><td>장소가 안 뜨면 류지 코옵이나 관련 이벤트로 먼저 해금.</td></tr><tr><td>6/25~12/19</td><td><b>칸다 · 교회</b></td><td>칸다 해금</td><td>사마리캄</td><td>힘 Rank 9의 벅스 과제에 바로 활용 가능.</td></tr><tr><td>7/26~12/19</td><td><b>시나가와 · 수족관</b></td><td>수족관 해금</td><td>마하스쿠카쟈 / 마하스쿤다</td><td>수족관 장소 해금 필요.</td></tr><tr><td>7/26~12/19</td><td><b>아사쿠사 · 스카이트리</b></td><td>아사쿠사 해금</td><td>타루카쟈 / 라쿠카쟈 / 스쿠카쟈</td><td>힘 Rank 3·5용 스킬을 카드로 해결하기 좋음.</td></tr><tr><td>9/2~9/29</td><td><b>미우라 해변</b></td><td>낮/방과후만 · 비 오는 날 불가</td><td>미들 그로우</td><td>짧은 기간 한정. 놓치기 쉬우므로 9월 초 우선 처리 권장.</td></tr><tr><td>9/19~12/19</td><td><b>아키하바라 · 메이드 카페</b></td><td>메이드 카페를 한 번 이상 이용</td><td>테트라쟈 / 데쿤다 / 데카쟈</td><td>힘 Rank 6·7 과제에 유용.</td></tr><tr><td>10/1~12/19</td><td><b>마이하마 · 데스티니랜드</b></td><td>장소 해금 · 비 오는 날 불가</td><td>테트라칸</td><td>날씨 제한 있음.</td></tr><tr><td>10/1~11/3</td><td><b>우에노 · 미술관</b></td><td>우에노 미술관 해금</td><td>리제네레이트 3</td><td>짧은 기간 한정. 11/3 이전 처리.</td></tr><tr><td>11/25~12/19</td><td><b>욘겐자야 · 르블랑</b></td><td>없음</td><td>하이 카운터</td><td>힘 Rank 10 세트 과제에 바로 활용 가능.</td></tr><tr><td>12/1~12/19*</td><td><b>시부야 · 지하상가</b></td><td>없음</td><td>히트라이저</td><td>일부 공략은 12/9 마감으로 표기하므로 안전하게 12/9까지 처리 권장.</td></tr><tr><td>1/13 이후</td><td><b>욘겐자야 · 주인공 방</b></td><td>이전 특별 외출 대부분 완료</td><td>불굴의 투지</td><td>3학기 라벤차 특별 외출. 앞선 외출을 충분히 완료했을 때 발생.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="twins-shortcuts">
+<div><b>🎯 힘 코옵에 바로 도움 되는 카드</b><br/>
+      빅뱅 버거 → 마하부흐(Rank 1) · 스카이트리 → 타루카쟈/라쿠카쟈(Rank 3/5) ·
+      메이드 카페 → 데카쟈/테트라쟈(Rank 6/7) · 수족관 → 마하스쿤다(Rank 8) ·
+      교회 → 사마리캄(Rank 9) · 르블랑 → 하이 카운터(Rank 10)
+    </div>
+</div>
 </section><section id="fusion">
 <h2>⚗️ 합체 도우미</h2>
 <p class="section-note">Steam/Switch/PS5 리마스터판 P5R 기준. DLC 페르소나가 전서에 들어가면 <b>같은 아르카나 내 레벨 결과가 달라질 수 있으므로</b>, 2장 표는 ‘결과 아르카나’ 판단용으로 쓰고 최종 페르소나명은 벨벳 룸 미리보기로 확인.</p>
@@ -449,8 +489,6 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 <div class="event"><div class="date">1/27</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">야마타노오로치</div></div></div>
 </div></section></section>
 <section id="unlock"><h2>🔓 코옵 개방/조건 빠른 메모</h2><div class="unlocks"><div class="unlock searchable"><b>전차 류지</b><br/><span>초반 자동 개방. Rank 7 ‘순살’이 매우 편함.</span></div><div class="unlock searchable"><b>연인 안</b><br/><span>초반 자동 개방.</span></div><div class="unlock searchable"><b>사신 타케미</b><br/><span>욘겐자야 진료소. 배짱 조건 구간 존재.</span></div><div class="unlock searchable"><b>법황 소지로</b><br/><span>르블랑. 후반 랭크에 상냥함 조건/메멘토스 리퀘스트 존재.</span></div><div class="unlock searchable"><b>절제 카와카미</b><br/><span>마다라메 진행 후 메이드 이벤트 → 학교 교무실 앞 대화 → 전화.</span></div><div class="unlock searchable"><b>사형수 이와이</b><br/><span>5/6 이후 밀리터리 숍. 후반에 배짱 MAX 조건.</span></div><div class="unlock searchable"><b>황제 유스케</b><br/><span>6/18 이후 시부야 역 지하통로.</span></div><div class="unlock searchable"><b>여법황 마코토</b><br/><span>카네시로 팰리스 이후, 지식 조건.</span></div><div class="unlock searchable"><b>운명 치하야</b><br/><span>신주쿠 점술가. 초반 비용/메멘토스 리퀘스트 필요.</span></div><div class="unlock searchable"><b>별 히후미</b><br/><span>칸다 교회. 지식/메멘토스 조건 구간.</span></div><div class="unlock searchable"><b>악마 오야</b><br/><span>6/23 이후 신주쿠 뉴커머.</span></div><div class="unlock searchable"><b>탑 신야</b><br/><span>9/4 이후 치트 유저 메멘토스 리퀘스트 진행 후.</span></div><div class="unlock searchable"><b>여황제 하루</b><br/><span>10/30 이후 맑은 날 학교 옥상.</span></div><div class="unlock searchable"><b>정의 아케치</b><br/><span>스토리 개방 후 수동 랭크. 11/17까지 8.</span></div><div class="unlock searchable"><b>신념 요시자와</b><br/><span>5/30 스토리 개방. 12/22까지 5.</span></div><div class="unlock searchable"><b>고문관 마루키</b><br/><span>학교에서 개방. 11/17까지 9.</span></div></div></section>
-
-
 <section id="abilities">
 <h2>🎁 코옵 어빌리티 / 실사용 보상표</h2>
 <p class="section-note">스탯·돈이 이미 충분한 플레이 기준으로, ‘언제 뭘 얻는지’ 빠르게 보는 표.</p>
