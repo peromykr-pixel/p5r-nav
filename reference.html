@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>P5R V11 자료실</title>
+<title>P5R V12 자료실</title>
 <style>
 :root{--bg:#0b0c10;--panel:#14161d;--text:#f4f5f7;--muted:#a8adbb;--red:#e6203c;--red2:#ff3b54;--line:#2a2e39;--gold:#f4c44e;--green:#35d07f;--blue:#5fb2ff;--purple:#b793ff;--orange:#ff9f43;--shadow:0 12px 30px rgba(0,0,0,.28)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#08090c,#10121a 28%,#0b0c10);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}
@@ -264,21 +264,39 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
   background:rgba(244,196,78,.06);border:1px solid rgba(244,196,78,.22);
   color:#e4e0d5;font-size:12.5px;
 }
+
+.ref-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:9px 0}
+.ref-card{display:grid;gap:4px;padding:10px 11px;border-radius:11px;background:#14161d;border:1px solid var(--line);font-size:12.5px}
+.ref-card b{color:#fff}.ref-card span{color:#b9bfca}
+@media(max-width:760px){.ref-cards{grid-template-columns:1fr}}
+#velvet-guide,#jose-guide,#darts-guide,#billiards-guide,#challenge-guide,#romance-events,#decorations-guide,#lockdown-guide,#jazz{scroll-margin-top:112px}
+
+.ref-chip-nav{
+ position:sticky;top:58px;z-index:45;display:flex;gap:6px;overflow-x:auto;
+ padding:8px 10px;background:rgba(10,11,15,.96);backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--line);scrollbar-width:none
+}
+.ref-chip-nav::-webkit-scrollbar{display:none}
+.ref-chip-nav a{
+ flex:0 0 auto;padding:6px 9px;border-radius:999px;border:1px solid #343945;
+ background:#171a22;color:#d9dce4;font-size:10.5px;font-weight:850
+}
+.ref-chip-nav a:first-child{border-color:rgba(255,93,118,.35);color:#ffc2ce}
 </style>
 </head>
 <body>
 <header class="topbar">
 <button aria-label="목차 열기" class="menu-btn" id="menuBtn">☰</button>
-<div class="brand"><b>P5R</b> <span>P5R V11 자료실</span></div>
+<div class="brand"><b>P5R</b> <span>P5R V12 자료실</span></div>
 <div class="search"><input id="search" placeholder="날짜·캐릭터·정답 검색" type="search"/></div>
-</header><nav aria-label="주요 바로가기" class="primary-quick-nav"><a class="primary-nav-btn confidant-btn" href="index.html"><span class="primary-nav-icon">⬅️</span><span><b>메인</b><small>코옵 · 달력 · 리퀘스트</small></span></a><a class="primary-nav-btn schedule-btn" href="#strength-helper"><span class="primary-nav-icon">👯</span><span><b>힘 코옵</b><small>상세 합체 공략</small></span></a><a class="primary-nav-btn request-btn" href="#twins-outings"><span class="primary-nav-icon">🎟️</span><span><b>쌍둥이 외출</b><small>기간 · 장소 · 보상</small></span></a></nav>
+</header><nav aria-label="자료실 바로가기" class="ref-chip-nav"><a href="index.html">⬅️ 메인</a><a href="#strength-helper">👯 힘 코옵</a><a href="#twins-outings">🎟️ 쌍둥이</a><a href="#velvet-guide">🧪 벨벳룸</a><a href="#jose-guide">🌹 호세</a><a href="#darts-guide">🎯 다트</a><a href="#billiards-guide">🎱 당구</a><a href="#challenge-guide">🥊 챌린지</a><a href="#romance-events">❤️ 연애</a><a href="#decorations-guide">🖼️ 장식품</a><a href="#lockdown-guide">🕯️ 독방/향</a><a href="#jazz">🎷 재즈</a><a href="#fusion">⚗️ 합체</a><a href="#compendium">📘 전서</a><a href="#skillcards">🃏 스킬카드</a><a href="#shops">🛍️ 상점</a><a href="#palaces">🏰 팰리스</a><a href="#deadlines">🚨 마감</a><a href="#calendar">📅 학교정답</a><a href="#unlock">🔓 코옵개방</a><a href="#abilities">🎁 코옵보상</a><a href="#ending">🧭 엔딩</a><a href="#sources">📚 출처</a></nav>
 <div class="layout">
-<aside class="sidebar" id="sidebar"><a href="index.html">⬅️ 메인으로</a><a href="#strength-helper">👯 힘 코옵 상세 합체</a><a href="#twins-outings">👯 쌍둥이 특별 외출</a><a href="#fusion">⚗️ 합체표</a><a href="#deadlines">🚨 절대 마감</a><a href="#palaces">🏰 팰리스</a><a href="#calendar">📅 학교/시험 정답</a><a href="#unlock">🔓 코옵 개방</a><a href="#abilities">🎁 코옵 보상</a><a href="#requests">🚌 메멘토스 목록</a><a href="#shops">🛍️ 상점/해금</a><a href="#compendium">📘 전서</a><a href="#skillcards">🃏 스킬카드</a><a href="#jazz">🎷 재즈</a><a href="#ending">🧭 엔딩</a><a href="#sources">📚 기준 자료</a></aside>
+<aside class="sidebar" id="sidebar"><a href="index.html">⬅️ 메인</a><a href="#strength-helper">👯 힘 코옵</a><a href="#twins-outings">🎟️ 쌍둥이</a><a href="#velvet-guide">🧪 벨벳룸</a><a href="#jose-guide">🌹 호세</a><a href="#darts-guide">🎯 다트</a><a href="#billiards-guide">🎱 당구</a><a href="#challenge-guide">🥊 챌린지</a><a href="#romance-events">❤️ 연애</a><a href="#decorations-guide">🖼️ 장식품</a><a href="#lockdown-guide">🕯️ 독방/향</a><a href="#jazz">🎷 재즈</a><a href="#fusion">⚗️ 합체</a><a href="#compendium">📘 전서</a><a href="#skillcards">🃏 스킬카드</a><a href="#shops">🛍️ 상점</a><a href="#palaces">🏰 팰리스</a><a href="#deadlines">🚨 마감</a><a href="#calendar">📅 학교정답</a><a href="#unlock">🔓 코옵개방</a><a href="#abilities">🎁 코옵보상</a><a href="#ending">🧭 엔딩</a><a href="#sources">📚 출처</a></aside>
 <main class="content">
 <section class="hero" id="home">
-<h1>P5R <span>V11</span><br/>힘 코옵 · 쌍둥이 외출 · 합체 · 전서</h1>
+<h1>P5R <span>V12</span><br/>완전 자료실</h1>
 <p>스팀 리마스터 한국어판 기준. 스탯·돈 노가다는 버리고, <b>수업/시험 정답·코옵 답안·기간제 마감·팰리스 체크</b>만 남긴 버전.</p>
-<p class="small">※ V11 자료실: 힘 코옵 상세 합체 공략 바로 아래에 쌍둥이 특별 외출 일정/조건/보상표 추가.</p>
+<p class="small">※ V12: 벨벳 룸·호세·다트·당구·챌린지 배틀·연애 시즌·한정 외출/장식품·독방/향·재즈 완전판 추가. 상단 칩에서 모든 자료로 바로 이동.</p>
 <div class="rule-grid"><div class="rule"><b>① 일정 자유</b>코옵·전투 순서는 네 마음대로. 단, 절대 마감은 지키기.</div><div class="rule"><b>② 질문은 바로 정답</b>수업·시험·퀴즈쇼·크로스워드를 날짜에 합침.</div><div class="rule"><b>③ 코옵 아르카나</b>일반 코옵은 같은 아르카나 페르소나를 슬롯에 소지하면 보너스. 🆓 표시 코옵은 소지 불필요.</div></div>
 </section><section id="strength-helper">
 <h2>👯 힘 코옵 상세 합체 공략</h2>
@@ -311,6 +329,124 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
       교회 → 사마리캄(Rank 9) · 르블랑 → 하이 카운터(Rank 10)
     </div>
 </div>
+</section><section id="velvet-guide">
+<h2>🧪 벨벳 룸 기능 해금표</h2>
+<p class="section-note">‘언제부터 뭘 할 수 있지?’를 한 번에 보는 표. 날짜는 가장 빠른 기준이며, 팰리스 진행 조건이 우선.</p>
+<div class="table-wrap"><table><thead><tr><th>최단 시점</th><th>기능</th><th>해금 조건</th><th>실사용 포인트</th></tr></thead><tbody>
+<tr><td>4/18</td><td><b>2체 합체 / 전서</b></td><td>카모시다 팰리스 자유 잠입</td><td>기본 합체·소환 시작</td></tr>
+<tr><td>4/18 이후</td><td><b>챌린지 배틀</b></td><td>벨벳 룸 재방문</td><td>시간 소비 없음 · 점수 보상</td></tr>
+<tr><td>5/18</td><td><b>페르소나 특성</b></td><td>마다라메 팰리스 진입</td><td>합체 시 특성 계승 가능</td></tr>
+<tr><td>5/18</td><td><b>집단 참수형</b></td><td>힘 코옵 Rank 1</td><td>3체 이상 특수합체</td></tr>
+<tr><td>5/20 최단</td><td><b>전기의자 / 아이템화</b></td><td>마다라메 팰리스 보물 루트 확보 후 입구 복귀</td><td>스킬카드·장비 제작</td></tr>
+<tr><td>힘 R3</td><td><b>독방</b></td><td>힘 코옵 Rank 3</td><td>내성 스킬 + 향 스탯 육성</td></tr>
+<tr><td>6/21 최단</td><td><b>합체경보</b></td><td>카네시로 팰리스 보물 루트 확보</td><td>합체·강화·아이템화 결과 강화</td></tr>
+<tr><td>7/26 최단</td><td><b>교수형 / 페르소나 강화</b></td><td>후타바 팰리스 보물 루트 확보</td><td>경험치·스킬 계승</td></tr>
+<tr><td>9/19</td><td><b>공개처형 / 네트워크 합체</b></td><td>해당 날짜 이후 벨벳 룸 방문</td><td>네트워크 전용 스킬/합체</td></tr>
+</tbody></table></div>
+<div class="tipbox"><b>합체경보 핵심</b><br/>벨벳 룸을 나가면 경보 종료. 같은 처형을 연속 사용하거나 황금 페르소나를 재료로 쓰면 사고 확률이 크게 올라간다. 경보 중 아이템화는 상위 아이템/카드가 나오므로 그로우·차지·컨센트레이트 제작에 특히 유용.</div>
+</section><section id="jose-guide">
+<h2>🌹 호세 / 메멘토스 성장 공략</h2>
+<p class="section-note">꽃은 방문마다 초기화, 스탬프는 영구 누적. 돈 에딧 플레이 기준 추천 우선순위는 <b>아이템 → EXP → 돈</b>.</p>
+<div class="ref-cards">
+<div class="ref-card"><b>🌸 꽃</b><span>메멘토스 안에서 호세 상점 교환. <b>메멘토스를 나가면 남은 꽃은 사라짐.</b> 나가기 전에 전부 써버리기.</span></div>
+<div class="ref-card"><b>⭐ 스탬프</b><span>계단 근처 고정 스탬프 + 랜덤 층 스탬프. 인지 변화에 사용하며 누적 상태는 유지됨.</span></div>
+<div class="ref-card"><b>🧠 인지 변화</b><span>EXP 최대 200% · 돈 최대 200% · 아이템 획득 수 최대 11. 너는 돈이 충분하니 아이템/EXP부터.</span></div>
+<div class="ref-card"><b>🌱 놓친 응어리</b><span>팰리스에서 놓친 응어리는 팰리스 소멸 후 호세가 <b>꽃 400개</b>에 판매할 수 있음.</span></div>
+<div class="ref-card"><b>💍 결정 → 반지</b><span>응어리 3개를 모은 결정을 팰리스 붕괴 후 호세에게 가져가면 강화 반지로 업그레이드.</span></div>
+</div>
+<h3>호세 상점 주요 입고 변화</h3>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>주요 변화</th></tr></thead><tbody>
+<tr><td>6/6</td><td>빈 카드·검은 아이템화 소재·기본 향 등 주요 교환품 확대</td></tr>
+<tr><td>7/12</td><td>향/소모품 계열 추가 변화</td></tr>
+<tr><td>9/2</td><td>버프 카드·츄잉 소울 등 중반 교환품 확대</td></tr>
+<tr><td>10/30</td><td>니르바나 계열 향 등 상위 향 입고</td></tr>
+<tr><td>11/25</td><td>소울 푸드 입고</td></tr>
+<tr><td>12/24</td><td>소마 입고</td></tr>
+</tbody></table></div>
+</section><section id="darts-guide">
+<h2>🎯 다트 공략</h2>
+<p class="section-note">6/5 키치죠지 PENGUIN SNIPER 해금. 낮/밤 이용 가능, 800엔, 시간 소비.</p>
+<div class="ref-cards">
+<div class="ref-card"><b>목적</b><span>동료의 <b>배턴터치 Rank를 최대 3</b>까지 올림. 주인공은 자동 MAX 취급.</span></div>
+<div class="ref-card"><b>빠르게 올리기</b><span>주인공이 4라운드째 동료에게 마무리를 넘기고, 마지막 격려 선택을 맞히면 <b>한 번에 +2 Rank</b> 가능.</span></div>
+<div class="ref-card"><b>아케치 예외</b><span>항상 701 규칙 + 불 스타일 때문에 한 번에 +2가 안 됨. 최소 2회 플레이 필요.</span></div>
+<div class="ref-card"><b>네 플레이</b><span>전투 자유라 필수는 아니지만, 배턴터치 SP/HP 회복과 화력 상승 체감은 큼.</span></div>
+</div>
+</section><section id="billiards-guide">
+<h2>🎱 당구 / 테크니컬 Rank 공략</h2>
+<p class="section-note">6/5 키치죠지 PENGUIN SNIPER 해금. 괴도단 전체에 적용되는 테크니컬 Rank를 4까지 올림.</p>
+<div class="table-wrap"><table><thead><tr><th>Rank</th><th>조건</th><th>해야 할 일</th><th>효과</th></tr></thead><tbody>
+<tr><td>0→1</td><td>당구 1회</td><td>이후 시부야 지하상가 스포츠숍에서 <b>『개안! 빌리어드 테크』</b> 구매·독서</td><td>테크니컬 강화 시작</td></tr>
+<tr><td>1→2</td><td>재주 2+</td><td>당구에서 백핸드 성공</td><td>대미지 증가</td></tr>
+<tr><td>2→3</td><td>재주 3+ + 점프 큐</td><td>스포츠숍의 점프 큐 구매 → 점프 샷 성공</td><td>추가 강화</td></tr>
+<tr><td>3→4</td><td>재주 MAX</td><td>Rank3 후 받는 『빌리어드의 마술사』 독서 → 마세 성공</td><td><b>테크니컬 시 확정 다운</b></td></tr>
+</tbody></table></div>
+<div class="tipbox">올스탯 MAX 에딧이면 재주 조건은 이미 해결. 즉 <b>당구 → 책 → 당구 → 점프 큐 → 당구 → 책 → 당구</b> 순서만 챙기면 됨.</div>
+</section><section id="challenge-guide">
+<h2>🥊 챌린지 배틀 공략</h2>
+<p class="section-note">4/18 이후 벨벳 룸에서 가능. 시간 소비 없음. 점수 보상은 <b>전체 회차를 통틀어 1번만</b> 얻는 한정품이 많아 판매 주의.</p>
+<div class="table-wrap"><table><thead><tr><th>권장 Lv</th><th>고득점 핵심</th><th>주요 보상</th></tr></thead><tbody>
+<tr><td>10</td><td>질풍 공격 · 안으로 격파</td><td>화염 링 / 공작의 외투 / 구리 덩어리</td></tr>
+<tr><td>20</td><td>핵열 공격 · 유스케로 격파</td><td><b>히트 벨트</b> / 빙결 회피 카드 / 은 덩어리</td></tr>
+<tr><td>30</td><td>염동 공격 · 모르가나로 격파</td><td><b>나찰의 나선 앵클릿</b> / 마하지온가 카드 / 금 덩어리</td></tr>
+<tr><td>50</td><td>화염 공격 · 류지로 격파</td><td>미라클 벨트 / 히트 업 카드 / 플라티나 덩어리</td></tr>
+<tr><td>80</td><td>전격 공격 · 마코토로 격파</td><td><b>극대만능 링</b> / 승리의 숨결 카드 / 다이아몬드 덩어리</td></tr>
+</tbody></table></div>
+<div class="tipbox"><b>주의:</b> 한정 액세서리/스킬카드 중 일부는 다른 입수법이 없고 NG+에서도 보상 획득 상태가 이어진다. 실수로 팔지 말 것.</div>
+</section><section id="romance-events">
+<h2>❤️ 연애 시즌 이벤트</h2>
+<p class="section-note">V12는 전원 연인 루트 기준. 본편 엔딩 조건에는 영향 없고 특별 이벤트/대사 차이 중심.</p>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>이벤트</th><th>메모</th></tr></thead><tbody>
+<tr><td>9/10</td><td><b>수학여행 특별 이벤트</b></td><td>조건을 만족한 상대 중 선택 가능</td></tr>
+<tr><td>10/26</td><td><b>학원제 뒤 특별 이벤트</b></td><td>조건 충족 상대와 이벤트</td></tr>
+<tr><td>12/24</td><td><b>크리스마스 이브</b></td><td>MAX 연인 중 1명 선택. 요시자와는 이 시점 MAX 불가</td></tr>
+<tr><td>2/14</td><td><b>발렌타인</b></td><td>연인 중 1명 선택</td></tr>
+<tr><td>2/15</td><td><b>복수 연애 수라장</b></td><td>여러 명과 연인 관계면 유명한 후속 이벤트 발생</td></tr>
+<tr><td>3/14</td><td><b>화이트데이</b></td><td>Royal 최종 루트에서 연인 데이트</td></tr>
+</tbody></table></div>
+</section><section id="decorations-guide">
+<h2>🖼️ 기간 한정 외출 / 방 장식품</h2>
+<p class="section-note">필수는 아니지만 한 회차에서 놓치면 다시 보기 어려운 수집·데이트 요소. 날짜가 고정된 초대는 메인 달력에도 추가.</p>
+<h3>고정 초대 / 스팟 해금 이벤트</h3>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>초대</th><th>포인트</th></tr></thead><tbody>
+<tr><td>5/28</td><td>류지 → 하라주쿠</td><td>장소 해금/외출</td></tr>
+<tr><td>7/3</td><td>류지 → 이치가야</td><td>낚시터 관련</td></tr>
+<tr><td>7/29</td><td>아케치 → 시나가와</td><td>수족관 관련</td></tr>
+<tr><td>7/30</td><td>마코토 → 이케부쿠로</td><td>스팟 해금</td></tr>
+<tr><td>8/6</td><td>안 → 메이지 신궁</td><td>스팟 해금</td></tr>
+<tr><td>8/15</td><td>마코토 → 진보초</td><td>책거리 관련</td></tr>
+<tr><td>10/9</td><td>후타바 → 나카노</td><td>스팟 해금</td></tr>
+<tr><td>11/6</td><td>하루 → 아사쿠사 축제</td><td><b>쿠마데 장식</b> 획득 가능</td></tr>
+<tr><td>1/22 또는 1/29</td><td>요시자와 → 데스티니랜드</td><td>3학기 특별 데이트 후보</td></tr>
+</tbody></table></div>
+<h3>대표 방 장식품</h3>
+<div class="ref-cards">
+<div class="ref-card"><b>류지</b><span>오기쿠보 라멘 그릇 · 나카노 페더맨 인형</span></div>
+<div class="ref-card"><b>안</b><span>시부야 초콜릿 분수 · 하라주쿠 아이돌 포스터</span></div>
+<div class="ref-card"><b>유스케</b><span>우에노 조각상 · 메이지 신궁 하마야 · 이케부쿠로 별 스티커</span></div>
+<div class="ref-card"><b>마코토</b><span>스이도바시 인형 · 차이나타운 슈마이 쿠션</span></div>
+<div class="ref-card"><b>후타바</b><span>아키하바라 히어로 피규어 · 아사쿠사 I♥TOKYO 셔츠</span></div>
+<div class="ref-card"><b>하루</b><span>츠키시마 거대 주걱 · 11/6 쿠마데</span></div>
+<div class="ref-card"><b>요시자와</b><span>시나가와 바다생물 인형</span></div>
+<div class="ref-card"><b>성인 코옵</b><span>치하야 스카이트리 램프 · 이와이 스완보트 · 카와카미 오다이바 기념품 · 오야 긴자 찻잔 · 히후미 진보초 왕장기 말</span></div>
+</div>
+</section><section id="lockdown-guide">
+<h2>🕯️ 독방 / 향 육성</h2>
+<p class="section-note">힘 Rank 3에서 해금. 페르소나를 맡겨 두고 현실 시간을 보내면 약점 보완용 내성 스킬과 향 스탯 보너스를 얻음.</p>
+<div class="ref-cards">
+<div class="ref-card"><b>독방</b><span>맡긴 페르소나의 약점 속성 중심으로 회피/내성 계열 스킬을 배움. 전투에서 직접 들고 다닐 필요 없음.</span></div>
+<div class="ref-card"><b>향</b><span>독방에 넣을 때 향을 쓰면 지정 능력치 상승. 합체경보 중에는 향 효과가 2배.</span></div>
+<div class="ref-card"><b>추천</b><span>최종 페르소나를 만들고 나서 약점 삭제 + 부족 스탯 보강 용도로 사용하면 효율적.</span></div>
+</div>
+<h3>레벨대별 독방 내성 스킬 경향</h3>
+<div class="table-wrap"><table><thead><tr><th>Lv</th><th>습득 경향</th></tr></thead><tbody>
+<tr><td>1~25</td><td>○○ 회피</td></tr>
+<tr><td>26~33</td><td>○○ 대회피</td></tr>
+<tr><td>34~52</td><td>○○ 내성</td></tr>
+<tr><td>53~62</td><td>○○ 무효</td></tr>
+<tr><td>63~74</td><td>○○ 반사</td></tr>
+<tr><td>75~99</td><td>○○ 흡수</td></tr>
+</tbody></table></div>
 </section><section id="fusion">
 <h2>⚗️ 합체 도우미</h2>
 <p class="section-note">Steam/Switch/PS5 리마스터판 P5R 기준. DLC 페르소나가 전서에 들어가면 <b>같은 아르카나 내 레벨 결과가 달라질 수 있으므로</b>, 2장 표는 ‘결과 아르카나’ 판단용으로 쓰고 최종 페르소나명은 벨벳 룸 미리보기로 확인.</p>
@@ -518,13 +654,30 @@ h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}
 <h3>실사용 핵심 카드 — 아이템화 표</h3>
 <div class="table-wrap"><table><thead><tr><th>스킬카드</th><th>페르소나</th><th>조건</th><th>효과</th></tr></thead><tbody><tr class="searchable"><td><b>미들 그로우</b></td><td>이자나기 피카로</td><td>일반 아이템화</td><td>비활성 페르소나 전투 경험치 50%</td></tr><tr class="searchable"><td><b>하이 그로우</b></td><td>이자나기 피카로</td><td>합체경보 아이템화</td><td>비활성 페르소나 전투 경험치 100%</td></tr><tr class="searchable"><td><b>차지</b></td><td>아테나 피카로</td><td>일반 아이템화</td><td>다음 물리 공격 2.5배</td></tr><tr class="searchable"><td><b>컨센트레이트</b></td><td>아테나 피카로</td><td>합체경보 아이템화</td><td>다음 마법 공격 2.5배</td></tr><tr class="searchable"><td><b>히트라이저</b></td><td>마가츠 이자나기 피카로</td><td>일반 아이템화</td><td>3턴 동안 아군 1명 공격·방어·명중/회피 상승</td></tr><tr class="searchable"><td><b>랜더마이저</b></td><td>마가츠 이자나기 피카로</td><td>합체경보 아이템화</td><td>3턴 동안 적 1명 공격·방어·명중/회피 저하</td></tr><tr class="searchable"><td><b>메디아라한</b></td><td>카구야 피카로</td><td>합체경보 아이템화</td><td>아군 전체 HP 완전 회복</td></tr><tr class="searchable"><td><b>메시아라이저</b></td><td>이자나기 오오카미 피카로</td><td>합체경보 아이템화</td><td>아군 전체 HP 완전 회복 + 상태이상 치료</td></tr><tr class="searchable"><td><b>무도의 마음가짐</b></td><td>츠키요미 피카로</td><td>합체경보 아이템화</td><td>물리 스킬 HP 소비 절반</td></tr><tr class="searchable"><td><b>마술의 소양</b></td><td>츠키요미 피카로</td><td>일반 아이템화</td><td>마법 스킬 SP 소비 절반</td></tr><tr class="searchable"><td><b>불굴의 투지</b></td><td>오르페우스 피카로(f)</td><td>합체경보 아이템화</td><td>전투불능 1회 버티고 HP 전회복</td></tr><tr class="searchable"><td><b>인왕 자세</b></td><td>메사이어 피카로</td><td>합체경보 아이템화</td><td>회피 불가 대신 받는 피해 절반</td></tr></tbody></table></div>
 <div class="tipbox"><b>추천 운용</b><br/>5월 하순 하이 그로우 1장 확보 → 6/18 이후 유스케 복제 → 육성할 페르소나에 배포. 차지·컨센트레이트·히트라이저·랜더마이저도 같은 방식으로 ‘원본 1장 확보 → 복제’가 편함.</div>
+</section><section id="jazz">
+<h2>🎷 재즈클럽 완전판</h2>
+<p class="section-note">아케치 Rank 4 이후 최단 6/26 해금. 밤·3000엔·시간 소비. 평일은 스탯, 일요일은 스킬.</p>
+<div class="table-wrap"><table><thead><tr><th>요일</th><th>칵테일</th><th>효과</th></tr></thead><tbody>
+<tr><td>월</td><td>레벨업퍼 보디</td><td>Lv +1 / HP +20</td></tr>
+<tr><td>화</td><td>파워풀 피즈</td><td>힘·내·운 합계 +4</td></tr>
+<tr><td>수</td><td>레벨업퍼 소울</td><td>Lv +1 / SP +10</td></tr>
+<tr><td>목</td><td>매지컬 피즈</td><td>마·속·운 합계 +4</td></tr>
+<tr><td>금</td><td>올 피즈</td><td>힘·마·내·속·운 각 +1 + HP10/SP5</td></tr>
+<tr><td>토</td><td>로테이션</td><td>월~금 칵테일 중 날짜별 지정</td></tr>
+<tr><td>일</td><td>오리지널</td><td><b>동료가 특정 스킬 습득</b></td></tr>
+</tbody></table></div>
+<div class="tipbox"><b>가수 방문일:</b> 칵테일 효과 2배. 7/4, 7/12, 7/28, 7/29 · 8/1, 8/9, 8/17, 8/25 · 9/5, 9/21, 9/22, 9/30 · 10/3 · 11/7, 11/8, 11/16 · 12/5, 12/13, 12/22 · 1/18, 1/26.</div>
+<h3>일요일 핵심 스킬</h3>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>스킬</th></tr></thead><tbody>
+<tr><td>6/26</td><td>테트라칸</td></tr><tr><td>7/3</td><td>마하타루카쟈</td></tr><tr><td>7/17</td><td>마하라쿠카쟈</td></tr><tr><td>7/31</td><td>마하스쿠카쟈</td></tr>
+<tr><td>8/7</td><td>마하타룬다</td></tr><tr><td>8/14</td><td>마하라쿤다</td></tr><tr><td>8/28</td><td>마하스쿤다</td></tr><tr><td>9/4</td><td><b>차지</b></td></tr>
+<tr><td>9/25</td><td><b>컨센트레이트</b></td></tr><tr><td>10/2</td><td>테트라칸</td></tr><tr><td>10/9</td><td>마하타루카쟈</td></tr><tr><td>10/16</td><td>마하라쿠카쟈</td></tr>
+<tr><td>10/23</td><td>마하스쿠카쟈</td></tr><tr><td>10/30</td><td>마카라칸</td></tr><tr><td>11/6</td><td>마하타룬다</td></tr><tr><td>11/13</td><td>마하라쿤다</td></tr>
+<tr><td>11/27</td><td>마하스쿤다</td></tr><tr><td>12/4</td><td><b>히트라이저</b></td></tr>
+</tbody></table></div>
+<div class="tipbox"><b>후타바:</b> 일요일에 데려가면 일반 스킬 대신 서포트 플러스 계열을 강화. 다른 동료의 재즈 스킬은 다음 회차 교회 고해성사로 복구 가능하지만 후타바 전용 지원 스킬은 예외.</div>
 </section>
-<section id="jazz">
-<h2>🎷 재즈클럽 일요일 스킬 일정</h2>
-<p class="section-note">아케치 코옵 Rank 4 이후 해금(최단 6/26). 일요일에는 정해진 스킬을 동료에게 직접 가르칠 수 있음.</p>
-<div class="table-wrap"><table><thead><tr><th>날짜</th><th>습득 스킬</th></tr></thead><tbody><tr class="searchable"><td>6/26</td><td><b>테트라칸</b></td></tr><tr class="searchable"><td>7/3</td><td><b>마하타루카쟈</b></td></tr><tr class="searchable"><td>7/17</td><td><b>마하라쿠카쟈</b></td></tr><tr class="searchable"><td>7/31</td><td><b>마하스쿠카쟈</b></td></tr><tr class="searchable"><td>8/7</td><td><b>마하타룬다</b></td></tr><tr class="searchable"><td>8/14</td><td><b>마하라쿤다</b></td></tr><tr class="searchable"><td>8/28</td><td><b>마하스쿤다</b></td></tr><tr class="searchable"><td>9/4</td><td><b>차지</b></td></tr><tr class="searchable"><td>9/25</td><td><b>컨센트레이트</b></td></tr><tr class="searchable"><td>10/2</td><td><b>테트라칸</b></td></tr><tr class="searchable"><td>10/9</td><td><b>마하타루카쟈</b></td></tr><tr class="searchable"><td>10/16</td><td><b>마하라쿠카쟈</b></td></tr><tr class="searchable"><td>10/23</td><td><b>마하스쿠카쟈</b></td></tr><tr class="searchable"><td>10/30</td><td><b>마카라칸</b></td></tr><tr class="searchable"><td>11/6</td><td><b>마하타룬다</b></td></tr><tr class="searchable"><td>11/13</td><td><b>마하라쿤다</b></td></tr><tr class="searchable"><td>11/27</td><td><b>마하스쿤다</b></td></tr><tr class="searchable"><td>12/4</td><td><b>히트라이저</b></td></tr></tbody></table></div>
-<div class="tipbox"><b>체감 가치 높은 날</b><br/>9/4 차지 · 9/25 컨센트레이트 · 12/4 히트라이저. 후타바를 일요일에 데려가면 표의 스킬 대신 전용 서포트 플러스 계열을 배움.</div>
-</section>
+
 <section id="ending"><h2>🧭 엔딩 분기 스포 최소 경고</h2><div class="deadline-grid">
 <div class="deadline"><span class="d">11/20 전후</span><span class="t">심문 선택지</span><p>괴도단 동료/협력자를 팔아넘기는 방향의 선택은 피하기.</p></div>
 <div class="deadline"><span class="d">12/24</span><span class="t">수상한 계약</span><p>‘좋다/받아들인다’ 계열 대신 거절. 정상 루트 유지.</p></div>
