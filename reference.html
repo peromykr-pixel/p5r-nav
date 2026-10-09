@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>P5R V10 자료실</title>
+<style>
+:root{--bg:#0b0c10;--panel:#14161d;--text:#f4f5f7;--muted:#a8adbb;--red:#e6203c;--red2:#ff3b54;--line:#2a2e39;--gold:#f4c44e;--green:#35d07f;--blue:#5fb2ff;--purple:#b793ff;--orange:#ff9f43;--shadow:0 12px 30px rgba(0,0,0,.28)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#08090c,#10121a 28%,#0b0c10);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}
+.topbar{position:sticky;top:0;z-index:50;height:58px;background:rgba(10,11,15,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 14px;gap:12px}.menu-btn{display:none;border:1px solid var(--line);background:var(--panel);color:#fff;border-radius:10px;padding:8px 10px;font-size:18px}.brand{font-weight:900;letter-spacing:-.3px;white-space:nowrap}.brand b{color:var(--red2)}.search{margin-left:auto;max-width:360px;width:38%;position:relative}.search input{width:100%;background:#171923;border:1px solid #313543;color:#fff;border-radius:999px;padding:10px 14px 10px 36px;outline:none}.search:before{content:"⌕";position:absolute;left:13px;top:7px;color:var(--muted);font-size:21px}
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);max-width:1500px;margin:0 auto}.sidebar{position:sticky;top:58px;height:calc(100vh - 58px);overflow:auto;padding:18px 12px;border-right:1px solid var(--line);background:rgba(12,13,18,.68)}.side-title{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#71798a;margin:14px 9px 6px}.sidebar a{display:block;padding:8px 10px;border-radius:9px;color:#cfd3dc;font-size:14px}.sidebar a:hover{background:#20232d;color:#fff}.content{padding:22px 28px 80px;min-width:0}
+.hero{padding:28px;border:1px solid #2a2e39;border-radius:18px;background:radial-gradient(circle at 95% 0%,rgba(230,32,60,.25),transparent 32%),linear-gradient(135deg,#171923,#101117);box-shadow:var(--shadow)}.hero h1{font-size:clamp(28px,4vw,46px);line-height:1.08;margin:0 0 12px;letter-spacing:-1.5px}.hero h1 span{color:var(--red2)}.hero p{color:#c5c9d2;margin:5px 0;max-width:900px}.rule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.rule{background:#0d0f14;border:1px solid #282c37;border-radius:12px;padding:12px;font-size:13px;color:#d9dce3}.rule b{display:block;color:#fff;margin-bottom:3px}
+h2{font-size:26px;margin:38px 0 14px;letter-spacing:-.7px}h3{margin:24px 0 10px}.section-note{color:var(--muted);font-size:14px;margin-top:-6px}
+.deadline-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.deadline{background:linear-gradient(135deg,#1b171a,#15171d);border:1px solid #40242b;border-radius:14px;padding:14px}.deadline .d{color:var(--red2);font-weight:900;font-size:17px}.deadline .t{font-weight:800;margin-left:7px}.deadline p{margin:5px 0 0;color:#c3c6ce;font-size:13px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}table{border-collapse:collapse;width:100%;min-width:560px;background:#12141a}th,td{padding:11px 13px;border-bottom:1px solid #282b35;text-align:left;font-size:14px}th{background:#1a1d25;color:#fff}tr:last-child td{border-bottom:0}
+.timeline{display:flex;flex-direction:column;gap:7px}.event{display:grid;grid-template-columns:65px 1fr;gap:10px;align-items:start;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}.date{font-weight:900;color:#fff;padding-top:3px}.event-body{display:flex;align-items:flex-start;gap:10px;min-width:0}.answer{font-weight:650;word-break:keep-all}.badge{font-size:11px;font-weight:900;border-radius:999px;padding:3px 8px;white-space:nowrap;margin-top:1px}.badge.blue{background:rgba(95,178,255,.15);color:var(--blue);border:1px solid rgba(95,178,255,.3)}.badge.purple{background:rgba(183,147,255,.15);color:var(--purple);border:1px solid rgba(183,147,255,.3)}.badge.green{background:rgba(53,208,127,.13);color:var(--green);border:1px solid rgba(53,208,127,.28)}.badge.orange{background:rgba(255,159,67,.13);color:var(--orange);border:1px solid rgba(255,159,67,.28)}
+.month-alerts{display:grid;gap:7px;margin-top:4px}.alert{background:rgba(230,32,60,.08);border:1px solid rgba(230,32,60,.28);border-radius:12px;padding:10px 12px;display:flex;gap:10px;flex-wrap:wrap}.alert b{color:#ff6b7e}.alert span{color:#c7cad2}
+.conf-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.conf-card{background:var(--panel);border:1px solid var(--line);border-radius:13px;overflow:hidden}.conf-card summary{cursor:pointer;list-style:none;padding:13px 14px;font-weight:900;display:flex;justify-content:space-between;align-items:center}.conf-card summary::-webkit-details-marker{display:none}.conf-card[open] summary{background:#191c24;border-bottom:1px solid var(--line)}.conf-inner{padding:6px 10px 10px}.conf-row{display:grid;grid-template-columns:72px 1fr;gap:8px;padding:9px 5px;border-bottom:1px dashed #2b2f39}.conf-row:last-child{border-bottom:0}.conf-row.important{background:rgba(244,196,78,.06);border-radius:8px;border-bottom:0;margin-top:4px}.rank{color:var(--gold);font-weight:900;font-size:13px}.choices{font-size:13.5px;color:#e0e2e7}.chev{color:#72798a}
+.palace-check{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.check{padding:11px;border-radius:12px;background:#13151b;border:1px solid var(--line);font-weight:700;font-size:13px}.unlocks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.unlock{background:#14161c;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px}.unlock b{color:#fff}.unlock span{color:#b8bdc7}.small{font-size:12px;color:#8f96a5}.source-box{border:1px solid var(--line);background:#101218;border-radius:14px;padding:14px;color:#aeb3bf;font-size:13px}.hidden{display:none!important}
+@media (max-width:900px){.layout{display:block}.sidebar{position:fixed;z-index:70;left:0;top:58px;width:290px;transform:translateX(-105%);transition:.22s;background:#101117;box-shadow:var(--shadow)}.sidebar.open{transform:translateX(0)}.menu-btn{display:block}.content{padding:16px 14px 70px}.search{width:100%;max-width:none}.brand{font-size:14px}.rule-grid,.deadline-grid,.conf-grid,.unlocks{grid-template-columns:1fr}.palace-check{grid-template-columns:1fr 1fr}.event{grid-template-columns:56px 1fr;padding:9px 10px}.event-body{gap:7px;flex-wrap:wrap}.hero{padding:20px 16px}}
+@media (max-width:480px){.brand span{display:none}.palace-check{grid-template-columns:1fr}.conf-row{grid-template-columns:62px 1fr}}
+
+.fusion-scroll{overflow:auto;border:1px solid var(--line);border-radius:14px;max-height:72vh}
+.matrix{min-width:1850px;font-size:12px}.matrix th,.matrix td{padding:7px 8px;text-align:center;white-space:nowrap}.matrix th{position:sticky;top:0;background:#20232c;z-index:2}.matrix tr th:first-child{position:sticky;left:0;z-index:3;background:#20232c}.matrix td:hover{background:#2a2e39;color:#fff}
+.tiny-btn{background:#1b1e27;border:1px solid #343945;color:#e8eaf0;border-radius:9px;padding:7px 10px;font-size:12px}
+.comp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.comp-item{display:grid;grid-template-columns:auto auto 1fr;grid-template-areas:"check tag name" ". . note";gap:4px 7px;align-items:center;background:#14161d;border:1px solid var(--line);border-radius:11px;padding:10px}.comp-item input{grid-area:check}.comp-item .mini-tag{grid-area:tag}.comp-item b{grid-area:name}.comp-item small{grid-area:note;color:#959cab}.mini-tag{font-size:10px;font-weight:900;color:#f5c663;background:rgba(244,196,78,.1);border:1px solid rgba(244,196,78,.25);padding:2px 5px;border-radius:999px}
+.persist-check{width:18px;height:18px;accent-color:var(--red2)}
+@media(max-width:900px){.comp-grid{grid-template-columns:1fr}}
+
+
+.timeline-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.timeline-card{display:grid;grid-template-columns:90px 1fr;gap:10px;background:#14161d;border:1px solid var(--line);border-radius:12px;padding:12px}
+.timeline-date{font-weight:900;color:var(--red2)}
+.timeline-card p{margin:3px 0 0;color:#b8bdc7;font-size:13px}
+.tipbox{margin-top:10px;background:rgba(95,178,255,.07);border:1px solid rgba(95,178,255,.24);border-radius:12px;padding:12px;color:#d7dce4;font-size:13px}
+@media(max-width:900px){.timeline-cards{grid-template-columns:1fr}.timeline-card{grid-template-columns:78px 1fr}}
+
+
+.master-legend{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 12px}
+.master-legend span{font-size:11px;background:#151820;border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:#d8dbe3}
+.master-jumps{position:sticky;top:58px;z-index:20;display:flex;gap:6px;overflow:auto;padding:8px 0;margin-bottom:10px;background:rgba(11,12,16,.93);backdrop-filter:blur(10px)}
+.master-jumps a{flex:0 0 auto;border:1px solid #343846;background:#171a22;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800}
+.master-month{scroll-margin-top:110px}.master-month h3{font-size:20px;margin:24px 0 8px;color:#fff}
+.master-day{display:grid;grid-template-columns:74px minmax(0,1fr);gap:10px;padding:8px 0;border-bottom:1px solid #20232d}
+.master-date{font-size:15px;font-weight:950;color:#fff;padding-top:8px;position:sticky;top:102px;align-self:start}
+.master-items{display:grid;gap:7px}
+.master-item{border:1px solid var(--line);border-left-width:4px;background:#14161d;border-radius:11px;padding:9px 10px}
+.master-item.school{border-left-color:#5fb2ff}.master-item.deadline{border-left-color:#ff3b54}.master-item.palace{border-left-color:#b793ff}.master-item.unlock{border-left-color:#35d07f}.master-item.mementos{border-left-color:#ff9f43}.master-item.shop{border-left-color:#f4c44e}.master-item.skill{border-left-color:#64d8cb}.master-item.jazz{border-left-color:#d884ff}.master-item.ending{border-left-color:#ff6b7e}.master-item.comp{border-left-color:#8ba3ff}
+.master-line{display:flex;flex-wrap:wrap;gap:7px;align-items:center}.master-line b{font-size:13.5px}.cat{font-size:10.5px;font-weight:900;color:#bbc0cc;background:#0e1015;border:1px solid #2a2e39;border-radius:999px;padding:2px 6px}.approx{font-size:10px;font-weight:900;color:#ffcf6e;border:1px solid rgba(244,196,78,.35);background:rgba(244,196,78,.08);border-radius:999px;padding:2px 6px}
+.master-detail{color:#aeb4c0;font-size:12.5px;margin-top:4px}
+@media(max-width:700px){.master-day{grid-template-columns:58px minmax(0,1fr)}.master-date{font-size:13px;top:104px}.master-item{padding:8px}.master-jumps{top:58px}}
+
+.quest-gate{margin:7px 4px 9px;padding:10px 11px;border-radius:10px;background:rgba(255,159,67,.08);border:1px solid rgba(255,159,67,.28);border-left:4px solid #ff9f43}.quest-gate.open{background:rgba(53,208,127,.07);border-color:rgba(53,208,127,.28);border-left-color:#35d07f}.quest-gate .gate-head{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-weight:900;font-size:12px}.quest-gate .gate-badge{font-size:10px;border-radius:999px;padding:2px 6px;background:#0f1117;border:1px solid #333844;color:#ffd38e}.quest-gate.open .gate-badge{color:#8cf2bd}.quest-gate .gate-title{color:#fff}.quest-gate .gate-text{font-size:12.5px;color:#c1c6cf;margin-top:5px}.quest-gate .gate-lock{color:#ffbd66;font-weight:850}.quest-gate.open .gate-lock{color:#7fe7ae}
+
+/* V6 primary mobile navigation */
+.primary-quick-nav{
+  position:sticky;
+  top:58px;
+  z-index:45;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  max-width:1500px;
+  margin:0 auto;
+  padding:9px 14px;
+  background:rgba(10,11,15,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.primary-nav-btn{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:10px 12px;
+  border:1px solid #343945;
+  border-radius:12px;
+  background:#151821;
+  box-shadow:0 5px 16px rgba(0,0,0,.16);
+}
+.primary-nav-btn b{
+  display:block;
+  font-size:14px;
+  line-height:1.15;
+  color:#fff;
+}
+.primary-nav-btn small{
+  display:block;
+  margin-top:3px;
+  color:#8f97a8;
+  font-size:10.5px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.primary-nav-icon{font-size:20px;flex:0 0 auto}
+.primary-nav-btn.confidant-btn{border-left:4px solid #ff5d76}
+.primary-nav-btn.schedule-btn{border-left:4px solid #5fb2ff}
+
+/* offset anchors so the sticky topbar + quick nav don't cover section titles */
+#confidants,#master-schedule{scroll-margin-top:145px}
+
+/* the master month jump bar now sits below both sticky bars */
+#master-schedule .master-jumps{top:131px}
+#master-schedule .master-date{top:175px}
+
+@media(max-width:900px){
+  .primary-quick-nav{padding:8px 10px;gap:7px}
+  .primary-nav-btn{padding:9px 10px}
+  .primary-nav-btn b{font-size:13px}
+  .primary-nav-btn small{font-size:9.5px}
+  #master-schedule .master-jumps{top:129px}
+  #master-schedule .master-date{top:172px}
+}
+@media(max-width:430px){
+  .primary-nav-btn small{display:none}
+  .primary-nav-btn{justify-content:center}
+}
+
+.persona-free-badge{
+  margin-left:auto;
+  margin-right:8px;
+  flex:0 0 auto;
+  font-size:10px;
+  font-weight:900;
+  color:#7de7b0;
+  background:rgba(53,208,127,.10);
+  border:1px solid rgba(53,208,127,.30);
+  border-radius:999px;
+  padding:3px 7px;
+  white-space:nowrap;
+}
+.persona-free-note{
+  margin:6px 0 8px;
+  padding:9px 10px;
+  border-radius:9px;
+  color:#ccefdc;
+  background:rgba(53,208,127,.07);
+  border:1px solid rgba(53,208,127,.22);
+  font-size:12.5px;
+}
+.persona-legend{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:0 0 12px;
+}
+.persona-legend span{
+  padding:6px 9px;
+  border-radius:999px;
+  font-size:11px;
+  border:1px solid var(--line);
+  background:#12151c;
+}
+.legend-needed{color:#ffd1d8}
+.legend-free{color:#a9edc8}
+.side-persona-hint{
+  margin:-4px 10px 6px;
+  color:#73dca4;
+  font-size:10px;
+  font-weight:800;
+}
+@media(max-width:520px){
+  .conf-card summary{gap:6px}
+  .persona-free-badge{font-size:9px;padding:2px 6px;margin-right:3px}
+}
+
+.primary-quick-nav{grid-template-columns:repeat(3,minmax(0,1fr))}.primary-nav-btn.request-btn{border-left:4px solid #ff9f43}#request-guide{scroll-margin-top:145px}
+.rq-global-tip{display:grid;gap:4px;margin:10px 0 12px;padding:12px;border-radius:12px;background:rgba(255,159,67,.08);border:1px solid rgba(255,159,67,.25);font-size:13px}.rq-global-tip b{color:#ffd09b}.rq-global-tip span{color:#c8ccd5}
+.rq-filterbar{display:flex;gap:6px;overflow:auto;padding:3px 0 9px}.rq-filterbar button{white-space:nowrap;border:1px solid #343945;background:#14171e;color:#bdc3cf;border-radius:999px;padding:6px 10px;font-size:11px;font-weight:800}.rq-filterbar button.active{background:#2b2021;border-color:#7a3842;color:#fff}.rq-tools{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+.rq-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.rq-card{background:#14161d;border:1px solid var(--line);border-radius:13px;overflow:hidden}.rq-card.urgent{border-color:rgba(255,59,84,.35)}.rq-card.identify{border-color:rgba(95,178,255,.30)}.rq-card.job{border-color:rgba(244,196,78,.30)}.rq-card.third{border-color:rgba(183,147,255,.35)}
+.rq-card summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:9px;align-items:center;padding:12px}.rq-card summary::-webkit-details-marker{display:none}.rq-card[open] summary{background:#191c24;border-bottom:1px solid var(--line)}.rq-summary-main{min-width:0}.rq-title{font-weight:900;font-size:14px;color:#fff}.rq-meta{margin-top:3px;color:#9299a8;font-size:10.5px}.rq-priority{font-size:10px;font-weight:900;border-radius:999px;padding:3px 7px;background:#0e1015;border:1px solid #343945;color:#d6d9df;white-space:nowrap}
+.rq-body{padding:8px 10px 11px}.rq-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:9px;padding:8px 3px;border-bottom:1px dashed #2b2f39}.rq-row:last-child{border-bottom:0}.rq-row>span{font-size:11px;font-weight:900;color:#aeb6c6}.rq-row p{margin:0;font-size:12.5px;color:#e0e3e9;line-height:1.55}.rq-answer p{color:#bce7ff}.rq-reward p{color:#f5cf75;font-weight:750}.rq-hidden{display:none!important}
+@media(max-width:900px){.rq-list{grid-template-columns:1fr}}@media(max-width:560px){.primary-nav-btn{gap:5px;padding:8px 6px}.primary-nav-icon{font-size:17px}.primary-nav-btn b{font-size:11.5px}.primary-nav-btn small{display:none}.rq-card summary{grid-template-columns:auto minmax(0,1fr) auto;gap:7px}.rq-card summary .chev{display:none}.rq-priority{font-size:9px;padding:2px 5px}.rq-row{grid-template-columns:76px minmax(0,1fr)}}
+
+/* V9 romance-route markers */
+.romance-global-banner{
+  margin:0 0 12px;
+  padding:11px 12px;
+  border-radius:11px;
+  background:linear-gradient(135deg,rgba(255,93,118,.12),rgba(183,147,255,.08));
+  border:1px solid rgba(255,93,118,.30);
+  color:#ffd8df;
+  font-size:13px;
+  font-weight:750;
+}
+.romance-card-badge{
+  margin-left:auto;
+  margin-right:7px;
+  flex:0 0 auto;
+  font-size:10px;
+  font-weight:900;
+  color:#ffb8c5;
+  background:rgba(255,93,118,.10);
+  border:1px solid rgba(255,93,118,.30);
+  border-radius:999px;
+  padding:3px 7px;
+  white-space:nowrap;
+}
+.romance-policy-note{
+  margin:6px 0 9px;
+  padding:9px 10px;
+  border-radius:9px;
+  color:#ffd5dd;
+  background:rgba(255,93,118,.06);
+  border:1px solid rgba(255,93,118,.20);
+  font-size:12.5px;
+}
+.romance-gate{
+  margin:7px 0;
+  padding:9px 10px;
+  border-radius:10px;
+  border:1px solid;
+}
+.romance-gate.pre{
+  background:rgba(183,147,255,.07);
+  border-color:rgba(183,147,255,.25);
+}
+.romance-gate.confirm{
+  background:rgba(255,93,118,.09);
+  border-color:rgba(255,93,118,.32);
+}
+.romance-head{
+  font-weight:900;
+  font-size:12px;
+  margin-bottom:4px;
+}
+.romance-gate.pre .romance-head{color:#d3bbff}
+.romance-gate.confirm .romance-head{color:#ffb0c0}
+.romance-text{font-size:12.5px;color:#e5e7ed;line-height:1.55}
+.romance-top-chip{
+  grid-column:1/-1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,93,118,.10);
+  border:1px solid rgba(255,93,118,.28);
+  color:#ffd2da;
+  font-size:11px;
+  font-weight:900;
+}
+@media(max-width:560px){
+  .romance-card-badge{font-size:9px;padding:2px 5px;margin-right:2px}
+  .romance-top-chip{font-size:10px;padding:5px 8px}
+}
+
+
+.primary-quick-nav{grid-template-columns:repeat(3,minmax(0,1fr))}
+#strength-helper{scroll-margin-top:145px}
+
+</style>
+</head>
+<body>
+<header class="topbar">
+<button aria-label="목차 열기" class="menu-btn" id="menuBtn">☰</button>
+<div class="brand"><b>P5R</b> <span>P5R V10 자료실</span></div>
+<div class="search"><input id="search" placeholder="날짜·캐릭터·정답 검색" type="search"/></div>
+</header><nav aria-label="주요 바로가기" class="primary-quick-nav"><a class="primary-nav-btn confidant-btn" href="index.html"><span class="primary-nav-icon">⬅️</span><span><b>메인</b><small>코옵 · 달력 · 리퀘스트</small></span></a><a class="primary-nav-btn schedule-btn" href="#strength-helper"><span class="primary-nav-icon">👯</span><span><b>힘 코옵</b><small>상세 합체 공략</small></span></a><a class="primary-nav-btn request-btn" href="#fusion"><span class="primary-nav-icon">⚗️</span><span><b>합체표</b><small>일반 · 특수 합체</small></span></a></nav>
+<div class="layout">
+<aside class="sidebar" id="sidebar"><a href="index.html">⬅️ 메인으로</a><a href="#strength-helper">👯 힘 코옵 상세 합체</a><a href="#fusion">⚗️ 합체표</a><a href="#deadlines">🚨 절대 마감</a><a href="#palaces">🏰 팰리스</a><a href="#calendar">📅 학교/시험 정답</a><a href="#unlock">🔓 코옵 개방</a><a href="#abilities">🎁 코옵 보상</a><a href="#requests">🚌 메멘토스 목록</a><a href="#shops">🛍️ 상점/해금</a><a href="#compendium">📘 전서</a><a href="#skillcards">🃏 스킬카드</a><a href="#jazz">🎷 재즈</a><a href="#ending">🧭 엔딩</a><a href="#sources">📚 기준 자료</a></aside>
+<main class="content">
+<section class="hero" id="home">
+<h1>P5R <span>V10</span><br/>힘 코옵 · 합체 · 전서 · 보조자료</h1>
+<p>스팀 리마스터 한국어판 기준. 스탯·돈 노가다는 버리고, <b>수업/시험 정답·코옵 답안·기간제 마감·팰리스 체크</b>만 남긴 버전.</p>
+<p class="small">※ V10 자료실: 메인 페이지에서 뺀 참고 자료를 한곳에 모으고, 힘 코옵 상세 합체 공략을 가장 위에 배치.</p>
+<div class="rule-grid"><div class="rule"><b>① 일정 자유</b>코옵·전투 순서는 네 마음대로. 단, 절대 마감은 지키기.</div><div class="rule"><b>② 질문은 바로 정답</b>수업·시험·퀴즈쇼·크로스워드를 날짜에 합침.</div><div class="rule"><b>③ 코옵 아르카나</b>일반 코옵은 같은 아르카나 페르소나를 슬롯에 소지하면 보너스. 🆓 표시 코옵은 소지 불필요.</div></div>
+</section><section id="strength-helper">
+<h2>👯 힘 코옵 상세 합체 공략</h2>
+<p class="section-note">Rank 1~10 요구 페르소나·요구 스킬·가장 간단한 제작 루트를 최상단에서 바로 확인.</p>
+<div class="table-wrap"><table><thead><tr><th>Rank</th><th>요구 페르소나</th><th>요구 스킬</th><th>간단 루트</th><th>메모</th></tr></thead><tbody><tr><td>1</td><td><b>잭 프로스트</b></td><td>마하부흐</td><td>잭 프로스트를 Lv12까지 올리기</td><td>가장 간단</td></tr><tr><td>2</td><td><b>아메노우즈메</b></td><td>프레이</td><td>주작 + 베리스 → 아메노우즈메, 프레이 계승</td><td></td></tr><tr><td>3</td><td><b>플라로우스</b></td><td>타루카쟈</td><td>베리스 + 엘리고르 + 오로바스 → 플라로우스, 엘리고르의 타루카쟈 계승</td><td>집단 참수형</td></tr><tr><td>4</td><td><b>봉황</b></td><td>카운터</td><td>야크시니 + 켈피 → 봉황, 카운터 계승</td><td></td></tr><tr><td>5</td><td><b>세탄타</b></td><td>라쿠카쟈</td><td>라미아 + 실키 → 세탄타, 라쿠카쟈 계승</td><td></td></tr><tr><td>6</td><td><b>네코쇼군</b></td><td>데카쟈</td><td>안즈를 Lv28까지 → 코다마 + 스다마 + 안즈, 데카쟈 계승</td><td>집단 참수형</td></tr><tr><td>7</td><td><b>라케시스</b></td><td>테트라쟈</td><td>클로토에서 테트라쟈 확보 → 클로토 + 리젠트 등으로 라케시스에 계승</td><td>DLC/레벨에 따라 결과 변동 가능</td></tr><tr><td>8</td><td><b>헤카톤케일</b></td><td>마하스쿤다</td><td>릴림을 Lv34까지 → 릴림 + 안즈 → 헤카톤케일, 마하스쿤다 계승</td><td></td></tr><tr><td>9</td><td><b>벅스</b></td><td>사마리캄</td><td>하리티를 Lv41까지 → 픽시 + 피샤차 + 하리티, 사마리캄 계승</td><td>넷스토킹녀 리퀘스트 선행</td></tr><tr><td>10</td><td><b>세트</b></td><td>하이퍼 카운터</td><td>다키니 Lv52에서 하이퍼 카운터 → 호루스에 계승 → 이시스 + 토트 + 아누비스 + 호루스 → 세트</td><td>하이퍼 카운터 카드 사용도 가능</td></tr></tbody></table></div>
+</section><section id="fusion">
+<h2>⚗️ 합체 도우미</h2>
+<p class="section-note">Steam/Switch/PS5 리마스터판 P5R 기준. DLC 페르소나가 전서에 들어가면 <b>같은 아르카나 내 레벨 결과가 달라질 수 있으므로</b>, 2장 표는 ‘결과 아르카나’ 판단용으로 쓰고 최종 페르소나명은 벨벳 룸 미리보기로 확인.</p>
+<h3>2장 합체 아르카나 표</h3>
+<div class="fusion-scroll"><table class="matrix"><thead><tr><th>×</th><th>광대</th><th>마법사</th><th>여법황</th><th>여황제</th><th>황제</th><th>법황</th><th>연인</th><th>전차</th><th>정의</th><th>은둔자</th><th>운명</th><th>힘</th><th>사형수</th><th>사신</th><th>절제</th><th>악마</th><th>탑</th><th>별</th><th>달</th><th>태양</th><th>심판</th><th>신념</th><th>고문관</th></tr></thead><tbody><tr><th>광대</th><td>광대</td><td>사신</td><td>달</td><td>사형수</td><td>절제</td><td>은둔자</td><td>전차</td><td>달</td><td>별</td><td>여법황</td><td>신념</td><td>사신</td><td>탑</td><td>힘</td><td>법황</td><td>절제</td><td>여황제</td><td>마법사</td><td>정의</td><td>정의</td><td>태양</td><td>고문관</td><td>법황</td></tr><tr><th>마법사</th><td>사신</td><td>마법사</td><td>절제</td><td>정의</td><td>신념</td><td>사신</td><td>악마</td><td>여법황</td><td>황제</td><td>연인</td><td>정의</td><td>광대</td><td>여황제</td><td>은둔자</td><td>전차</td><td>법황</td><td>절제</td><td>여법황</td><td>연인</td><td>법황</td><td>힘</td><td>힘</td><td>달</td></tr><tr><th>여법황</th><td>달</td><td>절제</td><td>여법황</td><td>황제</td><td>여황제</td><td>마법사</td><td>운명</td><td>법황</td><td>사신</td><td>절제</td><td>마법사</td><td>악마</td><td>사신</td><td>마법사</td><td>악마</td><td>달</td><td>사형수</td><td>은둔자</td><td>법황</td><td>전차</td><td>정의</td><td>정의</td><td>신념</td></tr><tr><th>여황제</th><td>사형수</td><td>정의</td><td>황제</td><td>여황제</td><td>정의</td><td>광대</td><td>심판</td><td>별</td><td>연인</td><td>힘</td><td>은둔자</td><td>신념</td><td>여법황</td><td>광대</td><td>신념</td><td>태양</td><td>황제</td><td>연인</td><td>운명</td><td>탑</td><td>황제</td><td>마법사</td><td>사형수</td></tr><tr><th>황제</th><td>절제</td><td>신념</td><td>여황제</td><td>정의</td><td>황제</td><td>운명</td><td>광대</td><td>신념</td><td>전차</td><td>법황</td><td>태양</td><td>탑</td><td>악마</td><td>은둔자</td><td>악마</td><td>정의</td><td>별</td><td>연인</td><td>탑</td><td>심판</td><td>여법황</td><td>여법황</td><td>연인</td></tr><tr><th>법황</th><td>은둔자</td><td>사신</td><td>마법사</td><td>광대</td><td>운명</td><td>법황</td><td>힘</td><td>별</td><td>사형수</td><td>고문관</td><td>정의</td><td>광대</td><td>태양</td><td>전차</td><td>사신</td><td>사형수</td><td>심판</td><td>탑</td><td>여법황</td><td>연인</td><td>신념</td><td>여황제</td><td>정의</td></tr><tr><th>연인</th><td>전차</td><td>악마</td><td>운명</td><td>심판</td><td>광대</td><td>힘</td><td>연인</td><td>절제</td><td>심판</td><td>전차</td><td>힘</td><td>사신</td><td>고문관</td><td>절제</td><td>힘</td><td>달</td><td>여황제</td><td>신념</td><td>마법사</td><td>여황제</td><td>사형수</td><td>탑</td><td>탑</td></tr><tr><th>전차</th><td>달</td><td>여법황</td><td>법황</td><td>별</td><td>신념</td><td>별</td><td>절제</td><td>전차</td><td>달</td><td>악마</td><td>고문관</td><td>은둔자</td><td>광대</td><td>악마</td><td>힘</td><td>절제</td><td>운명</td><td>달</td><td>연인</td><td>여법황</td><td>-</td><td>연인</td><td>태양</td></tr><tr><th>정의</th><td>별</td><td>황제</td><td>사신</td><td>연인</td><td>전차</td><td>사형수</td><td>심판</td><td>달</td><td>정의</td><td>마법사</td><td>황제</td><td>고문관</td><td>연인</td><td>광대</td><td>황제</td><td>광대</td><td>태양</td><td>여황제</td><td>악마</td><td>사형수</td><td>-</td><td>사형수</td><td>황제</td></tr><tr><th>은둔자</th><td>여법황</td><td>연인</td><td>절제</td><td>힘</td><td>법황</td><td>고문관</td><td>전차</td><td>악마</td><td>마법사</td><td>은둔자</td><td>별</td><td>법황</td><td>별</td><td>힘</td><td>힘</td><td>여법황</td><td>심판</td><td>힘</td><td>여법황</td><td>악마</td><td>황제</td><td>심판</td><td>신념</td></tr><tr><th>운명</th><td>신념</td><td>정의</td><td>마법사</td><td>은둔자</td><td>태양</td><td>정의</td><td>힘</td><td>고문관</td><td>황제</td><td>별</td><td>운명</td><td>신념</td><td>황제</td><td>별</td><td>여황제</td><td>법황</td><td>사형수</td><td>악마</td><td>태양</td><td>별</td><td>탑</td><td>고문관</td><td>심판</td></tr><tr><th>힘</th><td>사신</td><td>광대</td><td>악마</td><td>신념</td><td>탑</td><td>광대</td><td>사신</td><td>은둔자</td><td>고문관</td><td>법황</td><td>신념</td><td>힘</td><td>절제</td><td>법황</td><td>전차</td><td>사신</td><td>신념</td><td>달</td><td>마법사</td><td>달</td><td>-</td><td>별</td><td>여황제</td></tr><tr><th>사형수</th><td>탑</td><td>여황제</td><td>사신</td><td>여법황</td><td>악마</td><td>태양</td><td>고문관</td><td>광대</td><td>연인</td><td>별</td><td>황제</td><td>절제</td><td>사형수</td><td>달</td><td>사신</td><td>운명</td><td>은둔자</td><td>정의</td><td>고문관</td><td>법황</td><td>별</td><td>악마</td><td>별</td></tr><tr><th>사신</th><td>힘</td><td>은둔자</td><td>마법사</td><td>광대</td><td>은둔자</td><td>전차</td><td>절제</td><td>악마</td><td>광대</td><td>힘</td><td>별</td><td>법황</td><td>달</td><td>사신</td><td>사형수</td><td>전차</td><td>태양</td><td>고문관</td><td>법황</td><td>여법황</td><td>-</td><td>광대</td><td>마법사</td></tr><tr><th>절제</th><td>법황</td><td>전차</td><td>악마</td><td>신념</td><td>악마</td><td>사신</td><td>힘</td><td>힘</td><td>황제</td><td>힘</td><td>여황제</td><td>전차</td><td>사신</td><td>사형수</td><td>절제</td><td>광대</td><td>운명</td><td>태양</td><td>고문관</td><td>마법사</td><td>은둔자</td><td>은둔자</td><td>광대</td></tr><tr><th>악마</th><td>절제</td><td>법황</td><td>달</td><td>태양</td><td>정의</td><td>사형수</td><td>달</td><td>절제</td><td>광대</td><td>여법황</td><td>법황</td><td>사신</td><td>운명</td><td>전차</td><td>광대</td><td>악마</td><td>마법사</td><td>힘</td><td>전차</td><td>은둔자</td><td>연인</td><td>전차</td><td>전차</td></tr><tr><th>탑</th><td>여황제</td><td>절제</td><td>사형수</td><td>황제</td><td>별</td><td>심판</td><td>여황제</td><td>운명</td><td>태양</td><td>심판</td><td>사형수</td><td>신념</td><td>은둔자</td><td>태양</td><td>운명</td><td>마법사</td><td>탑</td><td>고문관</td><td>은둔자</td><td>황제</td><td>달</td><td>사신</td><td>사신</td></tr><tr><th>별</th><td>마법사</td><td>여법황</td><td>은둔자</td><td>연인</td><td>연인</td><td>탑</td><td>신념</td><td>달</td><td>여황제</td><td>힘</td><td>악마</td><td>달</td><td>정의</td><td>고문관</td><td>태양</td><td>힘</td><td>고문관</td><td>별</td><td>절제</td><td>심판</td><td>운명</td><td>절제</td><td>태양</td></tr><tr><th>달</th><td>정의</td><td>연인</td><td>법황</td><td>운명</td><td>탑</td><td>여법황</td><td>마법사</td><td>연인</td><td>악마</td><td>여법황</td><td>태양</td><td>마법사</td><td>고문관</td><td>법황</td><td>고문관</td><td>전차</td><td>은둔자</td><td>절제</td><td>달</td><td>여황제</td><td>광대</td><td>태양</td><td>절제</td></tr><tr><th>태양</th><td>정의</td><td>법황</td><td>전차</td><td>탑</td><td>심판</td><td>연인</td><td>여황제</td><td>여법황</td><td>사형수</td><td>악마</td><td>별</td><td>달</td><td>법황</td><td>여법황</td><td>마법사</td><td>은둔자</td><td>황제</td><td>심판</td><td>여황제</td><td>태양</td><td>사신</td><td>황제</td><td>운명</td></tr><tr><th>심판</th><td>태양</td><td>힘</td><td>정의</td><td>황제</td><td>여법황</td><td>신념</td><td>사형수</td><td>-</td><td>-</td><td>황제</td><td>탑</td><td>-</td><td>별</td><td>-</td><td>은둔자</td><td>연인</td><td>달</td><td>운명</td><td>광대</td><td>사신</td><td>심판</td><td>운명</td><td>악마</td></tr><tr><th>신념</th><td>고문관</td><td>힘</td><td>정의</td><td>마법사</td><td>여법황</td><td>여황제</td><td>탑</td><td>연인</td><td>사형수</td><td>심판</td><td>고문관</td><td>별</td><td>악마</td><td>광대</td><td>은둔자</td><td>전차</td><td>사신</td><td>절제</td><td>태양</td><td>황제</td><td>운명</td><td>신념</td><td>여법황</td></tr><tr><th>고문관</th><td>법황</td><td>달</td><td>신념</td><td>사형수</td><td>연인</td><td>정의</td><td>탑</td><td>태양</td><td>황제</td><td>신념</td><td>심판</td><td>여황제</td><td>별</td><td>마법사</td><td>광대</td><td>전차</td><td>사신</td><td>태양</td><td>절제</td><td>운명</td><td>악마</td><td>여법황</td><td>고문관</td></tr></tbody></table></div>
+<h3>특수·집단 합체표</h3>
+<div class="table-wrap"><table><thead><tr><th>Lv</th><th>아르카나</th><th>결과</th><th>재료</th><th>조건</th></tr></thead><tbody><tr><td>19</td><td>악마</td><td><b>플라로우스</b></td><td>베리스 + 엘리고르 + 오로바스</td><td></td></tr><tr><td>27</td><td>신념</td><td><b>탐 린</b></td><td>카트시 + 하이픽시 + 랴난시</td><td></td></tr><tr><td>30</td><td>별</td><td><b>네코쇼군</b></td><td>코다마 + 스다마 + 안즈</td><td></td></tr><tr><td>37</td><td>사신</td><td><b>헬즈 엔젤</b></td><td>아크엔젤 + 마타도르 + 데카라비아</td><td></td></tr><tr><td>49</td><td>광대</td><td><b>벅스</b></td><td>픽시 + 피샤차 + 하리티</td><td>리퀘스트 해금</td></tr><tr><td>51</td><td>탑</td><td><b>세트</b></td><td>이시스 + 아누비스 + 토트 + 호루스</td><td></td></tr><tr><td>59</td><td>심판</td><td><b>트럼페터</b></td><td>화이트 라이더 + 레드 라이더 + 페일 라이더 + 블랙 라이더</td><td>힘 Rank 8</td></tr><tr><td>67</td><td>광대</td><td><b>사악한 프로스트</b></td><td>잭 오 랜턴 + 잭 프로스트 + 킹 프로스트</td><td>리퀘스트 해금</td></tr><tr><td>68</td><td>별</td><td><b>바스키</b></td><td>나가 + 아난타 + 나가라자</td><td></td></tr><tr><td>76</td><td>태양</td><td><b>아수라왕</b></td><td>지국천 + 증장천 + 광목천 + 비사문천</td><td>태양 MAX</td></tr><tr><td>76</td><td>법황</td><td><b>황룡</b></td><td>현무 + 주작 + 백호 + 청룡</td><td>법황 MAX</td></tr><tr><td>80</td><td>별</td><td><b>스라오샤</b></td><td>미트라 + 미트라스 + 멜키세덱 + 릴리스 + 가브리엘</td><td>힘 Rank 8</td></tr><tr><td>80</td><td>세계</td><td><b>이자나기 오오카미</b></td><td>야마타노오로치 + 트론 + 이누가미 + 나가라자 + 바롱 + 노른</td><td>DLC</td></tr><tr><td>82</td><td>심판</td><td><b>시바</b></td><td>바롱 + 랑다</td><td></td></tr><tr><td>83</td><td>사신</td><td><b>앨리스</b></td><td>네비로스 + 벨리알</td><td>사신 MAX</td></tr><tr><td>84</td><td>절제</td><td><b>아르다</b></td><td>시바 + 파르바티</td><td>절제 MAX</td></tr><tr><td>87</td><td>탑</td><td><b>요시츠네</b></td><td>시키오우지 + 아라하바키 + 오오쿠니누시 + 야타가라스 + 후츠누시</td><td>힘 Rank 8</td></tr><tr><td>87</td><td>심판</td><td><b>미카엘</b></td><td>라파엘 + 우리엘 + 가브리엘</td><td>힘 Rank 8</td></tr><tr><td>88</td><td>전차</td><td><b>치우</b></td><td>헤카톤케일 + 화이트 라이더 + 토르 + 요시츠네 + 쿠 훌린</td><td>전차 MAX</td></tr><tr><td>89</td><td>은둔자</td><td><b>온교우키</b></td><td>후우키 + 스이키 + 킨키</td><td>은둔자 MAX</td></tr><tr><td>89</td><td>정의</td><td><b>메타트론</b></td><td>프린시펄리티 + 파워 + 도미니온 + 멜키세덱 + 미카엘</td><td>정의 MAX</td></tr><tr><td>89</td><td>세계</td><td><b>이자나기 오오카미 피카로</b></td><td>오오쿠니누시 + 오르트로스 + 칼리 + 미트라스 + 쿠 훌린 + 루시퍼</td><td>DLC</td></tr><tr><td>93</td><td>별</td><td><b>루시퍼</b></td><td>아누비스 + 아난타 + 트럼페터 + 미카엘 + 메타트론 + 사탄</td><td>별 MAX + 힘 Rank 8</td></tr><tr><td>95</td><td>광대</td><td><b>사타나엘</b></td><td>아르센 + 안즈 + 이슈타르 + 사탄 + 루시퍼 + 미카엘</td><td>2회차</td></tr></tbody></table></div>
+</section>
+<section id="deadlines"><h2>🚨 절대 마감 / 놓치면 아쉬운 것</h2><p class="section-note">자유플레이하다 로열 추가 콘텐츠를 놓치는 사고 방지용.</p><div class="deadline-grid"><div class="deadline searchable"><span class="d">4/30</span><span class="t">카모시다 팰리스</span><p>예고장 최종 안전 마감. 이시(응어리) 3/3과 중요 상자 확인 후 보스.</p></div><div class="deadline searchable"><span class="d">6/3</span><span class="t">마다라메 팰리스</span><p>예고장 최종 안전 마감.</p></div><div class="deadline searchable"><span class="d">7/7</span><span class="t">카네시로 팰리스</span><p>예고장 최종 안전 마감.</p></div><div class="deadline searchable"><span class="d">8/19</span><span class="t">후타바 팰리스</span><p>예고장/보스 준비 최종 안전일.</p></div><div class="deadline searchable"><span class="d">9/20 전</span><span class="t">고문관 마루키</span><p>Rank 5까지 올려 두기. 이후 일정 재개 전 안전 확보용.</p></div><div class="deadline searchable"><span class="d">10/9</span><span class="t">오쿠무라 팰리스</span><p>예고장 최종 안전 마감.</p></div><div class="deadline searchable"><span class="d">11/13</span><span class="t">태양 요시다</span><p>사실상 최종 활동 시점. MAX 노리면 그 전에 끝내기.</p></div><div class="deadline searchable"><span class="d">11/17</span><span class="t">정의 아케치</span><p>Rank 8까지. 로열 추가 이벤트 보존용.</p></div><div class="deadline searchable"><span class="d">11/17</span><span class="t">고문관 마루키</span><p>Rank 9까지. 3학기 진입의 핵심 필수 조건. Rank 10은 자동.</p></div><div class="deadline searchable"><span class="d">11/18~20</span><span class="t">니지마 팰리스/스토리</span><p>예고장과 보스가 스토리 고정 구간. 엔딩 분기 선택지 주의.</p></div><div class="deadline searchable"><span class="d">12/16</span><span class="t">시도 팰리스</span><p>예고장/공략 최종 안전 마감.</p></div><div class="deadline searchable"><span class="d">12/22</span><span class="t">신념 요시자와</span><p>Rank 5까지 올려 두면 3학기에서 후속 랭크 진행 가능.</p></div><div class="deadline searchable"><span class="d">12/24</span><span class="t">엔딩 분기</span><p>수상한 제안/계약은 거절. 진엔딩 루트 유지.</p></div><div class="deadline searchable"><span class="d">2/2</span><span class="t">최종 팰리스</span><p>예고장/최종 선택지 고정일. 현실 수락 계열 선택지 주의.</p></div></div></section>
+<section id="palaces"><h2>🏰 팰리스 마감 + 공통 체크</h2><div class="table-wrap"><table><thead><tr><th>팰리스</th><th>공략 가능 기간</th><th>예고장 안전 마감</th></tr></thead><tbody><tr><td>카모시다</td><td>4/18~5/1</td><td>4/30</td></tr><tr><td>마다라메</td><td>5/18~6/4</td><td>6/3</td></tr><tr><td>카네시로</td><td>6/21~7/8</td><td>7/7</td></tr><tr><td>후타바</td><td>7/26~8/20</td><td>8/19</td></tr><tr><td>오쿠무라</td><td>9/19~10/10</td><td>10/9</td></tr><tr><td>니지마</td><td>10/30~11/19</td><td>스토리 고정</td></tr><tr><td>시도</td><td>11/24~12/17</td><td>12/16</td></tr><tr><td>메멘토스 최심부</td><td>12/24</td><td>당일</td></tr><tr><td>최종 팰리스</td><td>1/13~2/2</td><td>2/2</td></tr></tbody></table></div>
+<h3>보스 들어가기 전 고정 체크</h3><div class="palace-check"><div class="check">✅ 이시(응어리) 3/3</div><div class="check">✅ 잠긴/중요 상자 회수</div><div class="check">✅ 필요한 페르소나 등록</div><div class="check">✅ 세이프룸 세이브</div></div><p class="small">보스 클리어 뒤 재입장 불가. 전투는 네 방식대로 밀어도 이 네 가지만 확인.</p></section>
+<section id="calendar"><h2>📅 날짜별 학교·시험·퀴즈·크로스워드</h2><p class="section-note">크로스워드는 앞 문제를 놓치면 다음 가능일에 밀려서 나오므로 날짜보다 문제 단서/순서가 최종 기준.</p><section class="month-section searchable" id="m4"><h2>4월</h2><div class="timeline">
+<div class="event"><div class="date">4/12</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">악인</div></div></div>
+<div class="event"><div class="date">4/18</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">신학기</div></div></div>
+<div class="event"><div class="date">4/19</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">길이는 같다</div></div></div>
+<div class="event"><div class="date">4/23</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">전부 다</div></div></div>
+<div class="event"><div class="date">4/25</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">확실하게 범인인 사람 → 옳다고 확신해서 하는 행동</div></div></div>
+<div class="event"><div class="date">4/27</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">4색 정리</div></div></div>
+<div class="event"><div class="date">4/27</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">꽃놀이</div></div></div>
+<div class="event"><div class="date">4/30</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">인물 → 재능 → 우수한 사람</div></div></div>
+<div class="month-alerts">
+<div class="alert"><b>🚨 4/30 · 카모시다 팰리스</b><span>예고장 최종 안전 마감. 이시(응어리) 3/3과 중요 상자 확인 후 보스.</span></div>
+</div>
+</div></section>
+<section class="month-section searchable" id="m5"><h2>5월</h2><div class="timeline">
+<div class="event"><div class="date">5/2</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">황금연휴</div></div></div>
+<div class="event"><div class="date">5/7</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">운명의 여자</div></div></div>
+<div class="event"><div class="date">5/10</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">헤이안 시대</div></div></div>
+<div class="event"><div class="date">5/10</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">우울증</div></div></div>
+<div class="event"><div class="date">5/11</div><div class="event-body"><span class="badge purple">중간고사</span><div class="answer">미나모토노 요시츠네 → 미나모토노 요리토모 → 요리토모가 이겼다 → 약자</div></div></div>
+<div class="event"><div class="date">5/12</div><div class="event-body"><span class="badge purple">중간고사</span><div class="answer">인지 → 둘 다</div></div></div>
+<div class="event"><div class="date">5/13</div><div class="event-body"><span class="badge purple">중간고사</span><div class="answer">악마의 사전 → 팜므파탈</div></div></div>
+<div class="event"><div class="date">5/16</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">플라시보 효과</div></div></div>
+<div class="event"><div class="date">5/18</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">갤러리</div></div></div>
+<div class="event"><div class="date">5/19</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">가츠시카 호쿠사이</div></div></div>
+<div class="event"><div class="date">5/19</div><div class="event-body"><span class="badge orange">퀴즈쇼</span><div class="answer">소음으로 상대가 노이로제에 걸리게 했다</div></div></div>
+<div class="event"><div class="date">5/21</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">1:1.414</div></div></div>
+<div class="event"><div class="date">5/23</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">공동 → 감각 → 공감각</div></div></div>
+<div class="event"><div class="date">5/26</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">코난 도일</div></div></div>
+<div class="event"><div class="date">5/26</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">꽃가루</div></div></div>
+<div class="event"><div class="date">5/26</div><div class="event-body"><span class="badge orange">퀴즈쇼</span><div class="answer">자백은 증거의 왕</div></div></div>
+<div class="event"><div class="date">5/31</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">존 실버</div></div></div>
+<div class="event"><div class="date">5/31</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">일본화</div></div></div>
+</div></section>
+<section class="month-section searchable" id="m6"><h2>6월</h2><div class="timeline">
+<div class="event"><div class="date">6/2</div><div class="event-body"><span class="badge orange">퀴즈쇼</span><div class="answer">…보호사는 보수가 없다</div></div></div>
+<div class="event"><div class="date">6/3</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">거장</div></div></div>
+<div class="event"><div class="date">6/4</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">후광 효과</div></div></div>
+<div class="event"><div class="date">6/7</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">다리 개수</div></div></div>
+<div class="event"><div class="date">6/7</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">기자회견</div></div></div>
+<div class="event"><div class="date">6/8</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">20세기</div></div></div>
+<div class="event"><div class="date">6/13</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">녹색</div></div></div>
+<div class="event"><div class="date">6/15</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">동전</div></div></div>
+<div class="event"><div class="date">6/16</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">하복</div></div></div>
+<div class="event"><div class="date">6/20</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">스마트폰</div></div></div>
+<div class="event"><div class="date">6/22</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">캐시</div></div></div>
+<div class="event"><div class="date">6/23</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">교황</div></div></div>
+<div class="event"><div class="date">6/24</div><div class="event-body"><span class="badge orange">퀴즈쇼</span><div class="answer">무일푼이면서…</div></div></div>
+<div class="event"><div class="date">6/27</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">개</div></div></div>
+<div class="event"><div class="date">6/29</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">금</div></div></div>
+<div class="event"><div class="date">6/30</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">장마전선</div></div></div>
+<div class="month-alerts">
+<div class="alert"><b>🚨 6/3 · 마다라메 팰리스</b><span>예고장 최종 안전 마감.</span></div>
+</div>
+</div></section>
+<section class="month-section searchable" id="m7"><h2>7월</h2><div class="timeline">
+<div class="event"><div class="date">7/1</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">만두</div></div></div>
+<div class="event"><div class="date">7/4</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">율리우스와 아우구스투스</div></div></div>
+<div class="event"><div class="date">7/7</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">은하수 → 소면</div></div></div>
+<div class="event"><div class="date">7/7</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">은행</div></div></div>
+<div class="event"><div class="date">7/9</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">삼각형</div></div></div>
+<div class="event"><div class="date">7/11</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">오래 기억되는 기억 → 무한에 가까운 양 → 무제한이다</div></div></div>
+<div class="event"><div class="date">7/12</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">절도</div></div></div>
+<div class="event"><div class="date">7/12</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">여름방학</div></div></div>
+<div class="event"><div class="date">7/13</div><div class="event-body"><span class="badge purple">기말고사</span><div class="answer">64도 → 제갈량 → 머리 → 머리의 대용품</div></div></div>
+<div class="event"><div class="date">7/14</div><div class="event-body"><span class="badge purple">기말고사</span><div class="answer">왕게·왕겟과 → 경제가 혼란에 빠졌다</div></div></div>
+<div class="event"><div class="date">7/15</div><div class="event-body"><span class="badge purple">기말고사</span><div class="answer">개와 고양이가 내린다 → 마귀 내장</div></div></div>
+<div class="event"><div class="date">7/19</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">기말고사</div></div></div>
+<div class="event"><div class="date">7/27</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">불꽃놀이</div></div></div>
+<div class="month-alerts">
+<div class="alert"><b>🚨 7/7 · 카네시로 팰리스</b><span>예고장 최종 안전 마감.</span></div>
+</div>
+</div></section>
+<section class="month-section searchable" id="m8"><h2>8월</h2><div class="timeline">
+<div class="event"><div class="date">8/3</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">열섬현상</div></div></div>
+<div class="event"><div class="date">8/4</div><div class="event-body"><span class="badge orange">퀴즈쇼</span><div class="answer">다른 사람의 차를 탔지만 돌려줬다</div></div></div>
+<div class="event"><div class="date">8/8</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">담력시험</div></div></div>
+<div class="event"><div class="date">8/17</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">자외선</div></div></div>
+<div class="event"><div class="date">8/25</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">열대야</div></div></div>
+<div class="event"><div class="date">8/30</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">해킹</div></div></div>
+<div class="month-alerts">
+<div class="alert"><b>🚨 8/19 · 후타바 팰리스</b><span>예고장/보스 준비 최종 안전일.</span></div>
+</div>
+</div></section>
+<section class="month-section searchable" id="m9"><h2>9월</h2><div class="timeline">
+<div class="event"><div class="date">9/2</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">태풍</div></div></div>
+<div class="event"><div class="date">9/3</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">번영</div></div></div>
+<div class="event"><div class="date">9/6</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">크로노스타시스</div></div></div>
+<div class="event"><div class="date">9/14</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">대여점</div></div></div>
+<div class="event"><div class="date">9/17</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">능력 있는 매는 발톱을 숨긴다</div></div></div>
+<div class="event"><div class="date">9/19</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">달맞이</div></div></div>
+<div class="event"><div class="date">9/21</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">한가운데</div></div></div>
+<div class="event"><div class="date">9/22</div><div class="event-body"><span class="badge orange">퀴즈쇼</span><div class="answer">징역 10년</div></div></div>
+<div class="event"><div class="date">9/24</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">하양 20에 검정 12</div></div></div>
+<div class="event"><div class="date">9/28</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">팬텀 → 바이브레이션 → 신드럼</div></div></div>
+<div class="event"><div class="date">9/28</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">랭킹</div></div></div>
+<div class="event"><div class="date">9/29</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">궁내청</div></div></div>
+<div class="event"><div class="date">9/29</div><div class="event-body"><span class="badge orange">퀴즈쇼</span><div class="answer">과거 범죄를 퍼뜨렸다</div></div></div>
+<div class="month-alerts">
+<div class="alert"><b>🚨 9/20 전 · 고문관 마루키</b><span>Rank 5까지 올려 두기. 이후 일정 재개 전 안전 확보용.</span></div>
+</div>
+</div></section>
+<section class="month-section searchable" id="m10"><h2>10월</h2><div class="timeline">
+<div class="event"><div class="date">10/3</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">별</div></div></div>
+<div class="event"><div class="date">10/6</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">조제프 기요틴</div></div></div>
+<div class="event"><div class="date">10/6</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">블랙</div></div></div>
+<div class="event"><div class="date">10/10</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">핼러윈</div></div></div>
+<div class="event"><div class="date">10/11</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">부버</div></div></div>
+<div class="event"><div class="date">10/17</div><div class="event-body"><span class="badge purple">중간고사</span><div class="answer">32면 → 원래는 단색이었다 → 흑백이었다</div></div></div>
+<div class="event"><div class="date">10/18</div><div class="event-body"><span class="badge purple">중간고사</span><div class="answer">샤를 앙리 상송 → 세습제라서</div></div></div>
+<div class="event"><div class="date">10/19</div><div class="event-body"><span class="badge purple">중간고사</span><div class="answer">강제 노동 → 유럽 대륙에 벌 3마리</div></div></div>
+<div class="event"><div class="date">10/22</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">15</div></div></div>
+<div class="event"><div class="date">10/24</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">착각</div></div></div>
+<div class="event"><div class="date">10/31</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">간이식당</div></div></div>
+<div class="month-alerts">
+<div class="alert"><b>🚨 10/9 · 오쿠무라 팰리스</b><span>예고장 최종 안전 마감.</span></div>
+</div>
+</div></section>
+<section class="month-section searchable" id="m11"><h2>11월</h2><div class="timeline">
+<div class="event"><div class="date">11/2</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">엄청나게 큰 것</div></div></div>
+<div class="event"><div class="date">11/4</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">검</div></div></div>
+<div class="event"><div class="date">11/4</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">현상금</div></div></div>
+<div class="event"><div class="date">11/8</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">몇 살이든 괜찮다</div></div></div>
+<div class="event"><div class="date">11/10</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">눈이 눈에 띄지 않아서</div></div></div>
+<div class="event"><div class="date">11/10</div><div class="event-body"><span class="badge orange">퀴즈쇼</span><div class="answer">TV 앞에 있는 당신</div></div></div>
+<div class="event"><div class="date">11/12</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">합성된 목소리라서</div></div></div>
+<div class="event"><div class="date">11/14</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">높은 산이라서</div></div></div>
+<div class="event"><div class="date">11/14</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">비난</div></div></div>
+<div class="event"><div class="date">11/15</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">참수 후 머리 걸기</div></div></div>
+<div class="event"><div class="date">11/17</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">달팽이꼴 곡선</div></div></div>
+<div class="event"><div class="date">11/24</div><div class="event-body"><span class="badge orange">퀴즈쇼</span><div class="answer">의장이 결정한다</div></div></div>
+<div class="event"><div class="date">11/28</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">카리스마</div></div></div>
+<div class="month-alerts">
+<div class="alert"><b>🚨 11/13 · 태양 요시다</b><span>사실상 최종 활동 시점. MAX 노리면 그 전에 끝내기.</span></div>
+<div class="alert"><b>🚨 11/17 · 정의 아케치</b><span>Rank 8까지. 로열 추가 이벤트 보존용.</span></div>
+<div class="alert"><b>🚨 11/17 · 고문관 마루키</b><span>Rank 9까지. 3학기 진입의 핵심 필수 조건. Rank 10은 자동.</span></div>
+<div class="alert"><b>🚨 11/18~20 · 니지마 팰리스/스토리</b><span>예고장과 보스가 스토리 고정 구간. 엔딩 분기 선택지 주의.</span></div>
+</div>
+</div></section>
+<section class="month-section searchable" id="m12"><h2>12월</h2><div class="timeline">
+<div class="event"><div class="date">12/2</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">인플루엔자</div></div></div>
+<div class="event"><div class="date">12/7</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">일루미네이션</div></div></div>
+<div class="event"><div class="date">12/8</div><div class="event-body"><span class="badge orange">퀴즈쇼</span><div class="answer">살인 미수</div></div></div>
+<div class="event"><div class="date">12/12</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">지지율</div></div></div>
+<div class="event"><div class="date">12/15</div><div class="event-body"><span class="badge orange">퀴즈쇼</span><div class="answer">지명 수배범은 자수할 수 없다</div></div></div>
+<div class="event"><div class="date">12/19</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">크리스마스</div></div></div>
+<div class="event"><div class="date">12/20</div><div class="event-body"><span class="badge purple">기말고사</span><div class="answer">D → 10억 이상 → 효수 → 퍼포먼스였다</div></div></div>
+<div class="event"><div class="date">12/21</div><div class="event-body"><span class="badge purple">기말고사</span><div class="answer">하트 → 방청</div></div></div>
+<div class="event"><div class="date">12/22</div><div class="event-body"><span class="badge purple">기말고사</span><div class="answer">일본 → 전함의 크기 (리마스터판)</div></div></div>
+<div class="month-alerts">
+<div class="alert"><b>🚨 12/16 · 시도 팰리스</b><span>예고장/공략 최종 안전 마감.</span></div>
+<div class="alert"><b>🚨 12/22 · 신념 요시자와</b><span>Rank 5까지 올려 두면 3학기에서 후속 랭크 진행 가능.</span></div>
+<div class="alert"><b>🚨 12/24 · 엔딩 분기</b><span>수상한 제안/계약은 거절. 진엔딩 루트 유지.</span></div>
+</div>
+</div></section>
+<section class="month-section searchable" id="m1"><h2>1월</h2><div class="timeline">
+<div class="event"><div class="date">1/11</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">팔백만 → 그냥 그대로</div></div></div>
+<div class="event"><div class="date">1/14</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">이와테</div></div></div>
+<div class="event"><div class="date">1/14</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">포부</div></div></div>
+<div class="event"><div class="date">1/18</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">다 끝나다</div></div></div>
+<div class="event"><div class="date">1/19</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">디오니소스</div></div></div>
+<div class="event"><div class="date">1/21</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">뱀</div></div></div>
+<div class="event"><div class="date">1/23</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">라케시스</div></div></div>
+<div class="event"><div class="date">1/24</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">내 휴대폰 → 거의 다 썼다 → 배터리</div></div></div>
+<div class="event"><div class="date">1/27</div><div class="event-body"><span class="badge blue">수업</span><div class="answer">친구의 친구의 친구까지</div></div></div>
+<div class="event"><div class="date">1/27</div><div class="event-body"><span class="badge green">크로스워드</span><div class="answer">야마타노오로치</div></div></div>
+</div></section></section>
+<section id="unlock"><h2>🔓 코옵 개방/조건 빠른 메모</h2><div class="unlocks"><div class="unlock searchable"><b>전차 류지</b><br/><span>초반 자동 개방. Rank 7 ‘순살’이 매우 편함.</span></div><div class="unlock searchable"><b>연인 안</b><br/><span>초반 자동 개방.</span></div><div class="unlock searchable"><b>사신 타케미</b><br/><span>욘겐자야 진료소. 배짱 조건 구간 존재.</span></div><div class="unlock searchable"><b>법황 소지로</b><br/><span>르블랑. 후반 랭크에 상냥함 조건/메멘토스 리퀘스트 존재.</span></div><div class="unlock searchable"><b>절제 카와카미</b><br/><span>마다라메 진행 후 메이드 이벤트 → 학교 교무실 앞 대화 → 전화.</span></div><div class="unlock searchable"><b>사형수 이와이</b><br/><span>5/6 이후 밀리터리 숍. 후반에 배짱 MAX 조건.</span></div><div class="unlock searchable"><b>황제 유스케</b><br/><span>6/18 이후 시부야 역 지하통로.</span></div><div class="unlock searchable"><b>여법황 마코토</b><br/><span>카네시로 팰리스 이후, 지식 조건.</span></div><div class="unlock searchable"><b>운명 치하야</b><br/><span>신주쿠 점술가. 초반 비용/메멘토스 리퀘스트 필요.</span></div><div class="unlock searchable"><b>별 히후미</b><br/><span>칸다 교회. 지식/메멘토스 조건 구간.</span></div><div class="unlock searchable"><b>악마 오야</b><br/><span>6/23 이후 신주쿠 뉴커머.</span></div><div class="unlock searchable"><b>탑 신야</b><br/><span>9/4 이후 치트 유저 메멘토스 리퀘스트 진행 후.</span></div><div class="unlock searchable"><b>여황제 하루</b><br/><span>10/30 이후 맑은 날 학교 옥상.</span></div><div class="unlock searchable"><b>정의 아케치</b><br/><span>스토리 개방 후 수동 랭크. 11/17까지 8.</span></div><div class="unlock searchable"><b>신념 요시자와</b><br/><span>5/30 스토리 개방. 12/22까지 5.</span></div><div class="unlock searchable"><b>고문관 마루키</b><br/><span>학교에서 개방. 11/17까지 9.</span></div></div></section>
+
+
+<section id="abilities">
+<h2>🎁 코옵 어빌리티 / 실사용 보상표</h2>
+<p class="section-note">스탯·돈이 이미 충분한 플레이 기준으로, ‘언제 뭘 얻는지’ 빠르게 보는 표.</p>
+<div class="table-wrap"><table><thead><tr><th>코옵</th><th>주요 Rank 보상</th><th>실사용 메모</th></tr></thead><tbody><tr><td><b>전차 류지</b></td><td>4 스텔스 대시 / 7 순살</td><td>7 순살: 약한 적을 메멘토스에서 즉시 격파·보상 획득</td></tr><tr><td><b>연인 안</b></td><td>2 걸스 토크 / 4 뇌쇄술 / 5 우는 연기</td><td>협상 보조</td></tr><tr><td><b>황제 유스케</b></td><td>1 카드 복제 / 5 카드 생성 / 7 라이브 페인트</td><td>스킬 카드 복제·생성</td></tr><tr><td><b>여법황 마코토</b></td><td>1 섀도 미적분 / 4 섀도 인수분해 / 7 섀도 미분</td><td>적 분석 강화</td></tr><tr><td><b>은둔자 후타바</b></td><td>1 모럴 서포트 / 2 메멘토스 서치 / 4 포지션 해킹 / 6 액티브 서포트 / 9 이머전시 서포트 / 10 파이널 가드</td><td>전투 자동 지원</td></tr><tr><td><b>여황제 하루</b></td><td>2 토양 개량 / 4 야채 재배량 증가 / 7 토양 개량·증 / 9 야채 재배 기간 단축</td><td>SP·보조용 야채</td></tr><tr><td><b>정의 아케치</b></td><td>2 탐정의 안목 / 4 명탐정의 관찰안</td><td>적 상성 자동 공개</td></tr><tr><td><b>운명 치하야</b></td><td>1 개운점 / 3 금전운점 / 5 상성점 / 7 비기 운명점 / 8 금기 천운점 / 10 오의 상성점</td><td>5 상성점, 8 합체경보 유도 특히 유용</td></tr><tr><td><b>힘 쌍둥이</b></td><td>1 집단 참수형 / 3 독방행 / 5 특별 취급 / 8 참수형 부스터 / 10 특별 대우</td><td>고레벨 합체·특수합체</td></tr><tr><td><b>사형수 이와이</b></td><td>1 초급 총기 개조 / 3 미채 개조 / 5 가격 인하 / 7 상급 개조 / 10 프라이스 제로</td><td>총기 커스텀</td></tr><tr><td><b>사신 타케미</b></td><td>1 회복약 / 3 멸균약 / 5 예방약 / 7 할인 서비스 / 10 부활약</td><td>진료소 품목/가격</td></tr><tr><td><b>절제 카와카미</b></td><td>1 땡땡이 / 3 가사대행 / 5 풀 땡땡이 / 6 슈퍼 가사대행 / 10 특별 마사지</td><td>10 특별 마사지가 자유 일정에 매우 강력</td></tr><tr><td><b>악마 오야</b></td><td>1/3/5/7 경계도 완화 / 10 전설의 특종</td><td>팰리스 경계도 관리</td></tr><tr><td><b>탑 신야</b></td><td>1 다운 샷 / 2 랜덤 파이어 / 3 위협 사격 / 5 스테인 코트 / 6 세이브 샷 / 8 일렉트릭 산탄 / 10 오다 스페셜</td><td>총격·협상</td></tr><tr><td><b>별 히후미</b></td><td>1 교체 / 3 몰이 / 5 포위 / 7 성금 / 9 투료 / 10 동료 전원 교체</td><td>전투 파티 교체/도주</td></tr><tr><td><b>달 미시마</b></td><td>1 미시마의 응원 / 3 미시마의 진심 응원 / 5 미시마의 필사 응원 / 7 괴도신봉 / 10 구세의 소원</td><td>벤치 포함 경험치 강화</td></tr><tr><td><b>태양 요시다</b></td><td>2 교섭술 / 3 지원금 모금 / 5 인품 화술 / 8 인심 장악술 / 10 카리스마 연설</td><td>협상·돈·고레벨 페르소나 교섭</td></tr><tr><td><b>신념 요시자와</b></td><td>2 덤블링 / 4 셰네 와이어 / 6 추격타·스포츠 근성 토크</td><td>팰리스 선제공격 보조</td></tr><tr><td><b>고문관 마루키</b></td><td>2 디톡스 X / 3 유희존 / 5 마인드 풀니스 / 7 퀵 플로 / 9 디톡스 DX / 10 웨이크 풀니스</td><td>주인공 SP/상태 자동 지원</td></tr></tbody></table></div>
+</section>
+<section id="requests">
+<h2>🚌 메멘토스 리퀘스트 33종</h2>
+<p class="section-note">발생만 시켜 두고 여러 개를 한 번에 처리 가능. 코옵이 막히는 리퀘스트는 우선 처리.</p>
+<div style="display:flex;gap:8px;margin:10px 0"><button class="tiny-btn" onclick="clearChecks('req-')">리퀘스트 체크 초기화</button></div>
+<div class="table-wrap"><table><thead><tr><th>✓</th><th>발생</th><th>리퀘스트</th><th>특정/조건</th><th>위치</th><th>보상/메모</th></tr></thead><tbody><tr class="searchable"><td><input class="persist-check" data-key="req-0" type="checkbox"/></td><td>5/7</td><td><b>끈질긴 전 남친을 조심해라!</b></td><td>자동</td><td>사상을 잃은 길 1</td><td>집착 진주</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-1" type="checkbox"/></td><td>5/9</td><td><b>오만한 왕따 가해자의 송곳니</b></td><td>미시마 SNS</td><td>조화를 잃은 길 2</td><td>프로테인</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-2" type="checkbox"/></td><td>마다라메 후</td><td><b>마을에서 고양이가 사라진다면</b></td><td>욘겐자야 주민 대화로 대상 특정</td><td>조화를 잃은 길 6</td><td>캣 브로치</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-3" type="checkbox"/></td><td>달 R3 후</td><td><b>왕따 가해자를 조종하는 어둠의 그놈</b></td><td>교문 앞 학생 대화</td><td>조화를 잃은 길 5</td><td>사악한 눈의 결정 / 사악한 프로스트 해금</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-4" type="checkbox"/></td><td>6/5</td><td><b>노인광소곡</b></td><td>키치죠지 주류 레포트 편집자 대화</td><td>조화를 잃은 길 3</td><td>성가신 허리띠</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-5" type="checkbox"/></td><td>6/6</td><td><b>왕따는 사랑의 시그널</b></td><td>자동</td><td>조화를 잃은 길 7</td><td>사복검</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-6" type="checkbox"/></td><td>달 R4 후</td><td><b>안녕, 지옥의 아르바이트</b></td><td>미시마 SNS</td><td>절제를 잃은 길 1</td><td>중화 간식 내비</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-7" type="checkbox"/></td><td>6/18</td><td><b>괴도단 VS 절도단</b></td><td>자동</td><td>절제를 잃은 길 4</td><td>오래된 열쇠</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-8" type="checkbox"/></td><td>절제 R8 후 → R9 전</td><td><b>고민하는 은사님은 메이드 인 헬</b></td><td>카와카미 코옵 진행 중</td><td>절제를 잃은 길 7</td><td>질투 체인</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-9" type="checkbox"/></td><td>운명 개방</td><td><b>폭력을 쓰는 남자친구의 사정</b></td><td>치하야 개방 플래그</td><td>절제를 잃은 길 3</td><td>혼수봉</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-10" type="checkbox"/></td><td>7/10</td><td><b>침울한 눈동자의 넷스토킹녀</b></td><td>미시마 SNS</td><td>절제를 잃은 길 8</td><td>점착 털뭉치 / 벅스 해금</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-11" type="checkbox"/></td><td>후타바 후</td><td><b>우리는 노예가 아니야</b></td><td>신주쿠 뉴커머 알바 2회차로 대상 특정</td><td>미덕을 잃은 길 8</td><td>놀이공원 에스코트</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-12" type="checkbox"/></td><td>후타바+2일</td><td><b>무차별 폭행 사건을 쫓아라</b></td><td>라플레시아 알바 3회차</td><td>미덕을 잃은 길 5</td><td>차지 카드</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-13" type="checkbox"/></td><td>후타바+3일</td><td><b>고양이는 죽어서 원한을 남긴다</b></td><td>트리플 세븐 알바 3회차</td><td>미덕을 잃은 길 1</td><td>피의 시미터</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-14" type="checkbox"/></td><td>8/29</td><td><b>악랄한 땅투기꾼에게 철퇴를</b></td><td>미시마 SNS</td><td>미덕을 잃은 길 10</td><td>거듭나는 변두리</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-15" type="checkbox"/></td><td>운명 R7 후 → R8 전</td><td><b>파헤쳐라! 영능력자의 트릭</b></td><td>치하야 코옵 진행 중</td><td>미덕을 잃은 길 3</td><td>교주의 손</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-16" type="checkbox"/></td><td>별 R7 후 → R8 전</td><td><b>매니저 엄마를 향한 승부수</b></td><td>히후미 코옵 진행 중</td><td>자비를 잃은 길 6</td><td>보옥륜</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-17" type="checkbox"/></td><td>9/4</td><td><b>치트 유저라 불린 남자</b></td><td>시부야 게임센터 게이머 대화 → 신야 플래그</td><td>자비를 잃은 길 5</td><td>물리 무효 카드</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-18" type="checkbox"/></td><td>사신 R7 후 → R8 전</td><td><b>의사 항쟁: 사라진 치료법</b></td><td>타케미 코옵 진행 중</td><td>절제를 잃은 길 2</td><td>메디라마 카드</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-19" type="checkbox"/></td><td>10/14</td><td><b>쓰레기통을 본 살인청부업자는 웃는다</b></td><td>미시마 SNS</td><td>자비를 잃은 길 12</td><td>하이퍼 카운터 카드</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-20" type="checkbox"/></td><td>사형수 R7 후 → R8 전</td><td><b>암거래: 개조 총을 노리는 남자</b></td><td>이와이 코옵 진행 중</td><td>미덕을 잃은 길 4</td><td>서투른 붕대</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-21" type="checkbox"/></td><td>악마 R7 후 → R8 전</td><td><b>탄로! 악덕 상사의 횡포</b></td><td>오야 코옵 진행 중</td><td>미덕을 잃은 길 9</td><td>기공 대 카드</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-22" type="checkbox"/></td><td>법황 R8 후 → R9 전</td><td><b>유산을 노리는 나쁜 외삼촌</b></td><td>르블랑 근처 후타바와 대화, 주인공 단독 전투</td><td>특수</td><td>요행수 사벨</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-23" type="checkbox"/></td><td>은둔자 R7 후 → R8 전</td><td><b>소녀를 좀먹는 무정한 부모</b></td><td>후타바 코옵</td><td>감동을 잃은 길 3</td><td>하이 그로우 카드</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-24" type="checkbox"/></td><td>탑 R8 후 → R9 전</td><td><b>아이 샷 마이 마더</b></td><td>신야 코옵 진행 중</td><td>감동을 잃은 길 11</td><td>소마</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-25" type="checkbox"/></td><td>달 R8 후</td><td><b>12장의 차용증명서</b></td><td>9/19 이후 미시마 SNS</td><td>자비를 잃은 길 3</td><td>테르모필라이 카드</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-26" type="checkbox"/></td><td>11/25</td><td><b>흰 항아리, 검은 사기꾼</b></td><td>미시마 SNS</td><td>감동을 잃은 길 13</td><td>파천의 얇은 옷</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-27" type="checkbox"/></td><td>시도 후</td><td><b>연예계의 거물이라 불리는 남자</b></td><td>미시마 SNS</td><td>관용을 잃은 길 14</td><td>이모틀 조끼</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-28" type="checkbox"/></td><td>12/10</td><td><b>호색한의 발라드</b></td><td>안 SNS</td><td>관용을 잃은 길 8</td><td>선동의 관</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-29" type="checkbox"/></td><td>1/13</td><td><b>자그마한 비명</b></td><td>후타바 SNS</td><td>인지를 얻은 자의 길 3</td><td>대주살의 나선 반지</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-30" type="checkbox"/></td><td>1/14</td><td><b>동생을 생각하며 운다</b></td><td>미시마 SNS</td><td>인지를 얻은 자의 길 7</td><td>힘 상향의 부적×8</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-31" type="checkbox"/></td><td>3학기 팰리스 후반</td><td><b>우상과 일각수</b></td><td>류지 SNS + 아키하바라 NPC 특정</td><td>인지를 얻은 자의 길 13</td><td>원 샷 킬 카드</td></tr><tr class="searchable"><td><input class="persist-check" data-key="req-32" type="checkbox"/></td><td>3학기 팰리스 후반</td><td><b>페이크맨 쇼</b></td><td>류지 SNS + 키치죠지 NPC 특정</td><td>인지를 얻은 자의 길 15</td><td>파천황 벨트</td></tr></tbody></table></div>
+</section>
+<section id="shops">
+<h2>🛍️ 시설·상점·핵심 해금 타이밍</h2>
+<p class="section-note">돈이 넘치는 플레이니까 가격보다 ‘언제 열리느냐’ 중심.</p>
+<div class="table-wrap"><table><thead><tr><th>시점</th><th>장소</th><th>해금/입고</th><th>용도</th></tr></thead><tbody><tr><td>4/18</td><td><b>학교 도서관</b></td><td>대여·공부 이용 본격화</td><td>책/공부</td></tr><tr><td>4/24</td><td><b>시부야 DVD 대여점</b></td><td>DVD 회원 가입</td><td>DVD</td></tr><tr><td>5/6</td><td><b>시부야 밀리터리 숍</b></td><td>이와이 코옵 개방 플래그 시작</td><td>총기 개조</td></tr><tr><td>5/18</td><td><b>벨벳 룸</b></td><td>힘 코옵 개방</td><td>특수합체/특별취급의 출발</td></tr><tr><td>6/5</td><td><b>욘겐자야 리사이클 숍</b></td><td>레트로 게임 세트 입고</td><td>TV 게임</td></tr><tr><td>6/5 전후</td><td><b>키치죠지</b></td><td>재즈클럽·다트·당구·헌옷가게 등</td><td>로열 핵심 시설</td></tr><tr><td>6/22 전후</td><td><b>신주쿠</b></td><td>치하야·오야 및 밤 시설</td><td>점술/바</td></tr><tr><td>7/1</td><td><b>학교 도서관</b></td><td>『속독술』 대여 가능</td><td>독서 효율</td></tr><tr><td>7/26</td><td><b>DVD 대여점</b></td><td>상위 인간력 DVD 4종 입고</td><td>DVD</td></tr><tr><td>9/1</td><td><b>욘겐자야 리사이클 숍</b></td><td>망가진 노트북 입고</td><td>다크넷</td></tr><tr><td>9월 초</td><td><b>아키하바라</b></td><td>공구점/메이드 카페/게임센터 등</td><td>수리·힘 카드 루트</td></tr><tr><td>10/1</td><td><b>아키하바라 공구점</b></td><td>구도자의 공구 입고</td><td>잠입도구 제작 수 2배</td></tr><tr><td>10/30</td><td><b>학교 옥상</b></td><td>하루 코옵 개방 가능</td><td>여황제</td></tr></tbody></table></div>
+</section>
+<section id="compendium">
+<h2>📘 전서 핵심 체크리스트</h2>
+<p class="section-note">일반 섀도보다 <b>코옵 MAX·리퀘스트·힘 Rank·3학기·NG+·DLC처럼 조건이 붙는 페르소나</b> 위주. 체크 상태는 이 브라우저에 저장됨.</p>
+<div style="display:flex;gap:8px;margin:10px 0"><button class="tiny-btn" onclick="clearChecks('comp-')">전서 체크 초기화</button></div>
+<div class="comp-grid"><div class="comp-item searchable"><input class="persist-check" data-key="comp-0" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>락슈미</b><small>운명 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-1" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>산달폰</b><small>달 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-2" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>황룡</b><small>법황 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-3" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>아수라왕</b><small>태양 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-4" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>자오우곤겐</b><small>힘 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-5" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>보후 마나흐</b><small>고문관 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-6" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>아티스</b><small>사형수 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-7" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>비슈누</b><small>광대 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-8" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>키벨레</b><small>여법황 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-9" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>앨리스</b><small>사신 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-10" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>오딘</b><small>황제 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-11" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>아르다</b><small>절제 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-12" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>마더 할롯</b><small>여황제 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-13" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>이슈타르</b><small>연인 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-14" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>후츠누시</b><small>마법사 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-15" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>베엘제붑</b><small>악마 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-16" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>치우</b><small>전차 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-17" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>메타트론</b><small>정의 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-18" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>온교우키</b><small>은둔자 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-19" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>마다</b><small>탑 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-20" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>사탄</b><small>심판 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-21" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>루시퍼</b><small>별 MAX + 힘 8</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-22" type="checkbox"/><span class="mini-tag">코옵 MAX</span><b>마리아</b><small>신념 MAX</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-23" type="checkbox"/><span class="mini-tag">리퀘스트</span><b>벅스</b><small>넷스토킹녀 클리어</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-24" type="checkbox"/><span class="mini-tag">리퀘스트</span><b>사악한 프로스트</b><small>왕따 가해자 조종 클리어</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-25" type="checkbox"/><span class="mini-tag">힘 8</span><b>트럼페터</b><small>참수형 부스터</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-26" type="checkbox"/><span class="mini-tag">힘 8</span><b>스라오샤</b><small>참수형 부스터</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-27" type="checkbox"/><span class="mini-tag">힘 8</span><b>요시츠네</b><small>참수형 부스터</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-28" type="checkbox"/><span class="mini-tag">힘 8</span><b>미카엘</b><small>참수형 부스터</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-29" type="checkbox"/><span class="mini-tag">3학기</span><b>로아</b><small>1/12 이후</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-30" type="checkbox"/><span class="mini-tag">3학기</span><b>비야키</b><small>1/12 이후</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-31" type="checkbox"/><span class="mini-tag">3학기</span><b>마카브르</b><small>1/12 이후</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-32" type="checkbox"/><span class="mini-tag">3학기</span><b>키마이라</b><small>1/12 이후</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-33" type="checkbox"/><span class="mini-tag">3학기</span><b>스카아하</b><small>1/12 이후</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-34" type="checkbox"/><span class="mini-tag">3학기</span><b>알릴라트</b><small>1/12 이후</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-35" type="checkbox"/><span class="mini-tag">3학기</span><b>바알</b><small>1/12 이후</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-36" type="checkbox"/><span class="mini-tag">3학기</span><b>하스터</b><small>1/12 이후</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-37" type="checkbox"/><span class="mini-tag">3학기</span><b>파프니르</b><small>1/12 이후</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-38" type="checkbox"/><span class="mini-tag">NG+</span><b>사타나엘</b><small>굿엔드 후 2회차</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-39" type="checkbox"/><span class="mini-tag">DLC</span><b>라울</b><small>수록 DLC</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-40" type="checkbox"/><span class="mini-tag">DLC</span><b>이자나기 오오카미</b><small>수록 DLC</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-41" type="checkbox"/><span class="mini-tag">DLC</span><b>이자나기 오오카미 피카로</b><small>수록 DLC</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-42" type="checkbox"/><span class="mini-tag">DLC</span><b>메사이어</b><small>수록 DLC</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-43" type="checkbox"/><span class="mini-tag">DLC</span><b>메사이어 피카로</b><small>수록 DLC</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-44" type="checkbox"/><span class="mini-tag">DLC</span><b>타나토스</b><small>수록 DLC</small></div><div class="comp-item searchable"><input class="persist-check" data-key="comp-45" type="checkbox"/><span class="mini-tag">DLC</span><b>타나토스 피카로</b><small>수록 DLC</small></div></div>
+</section>
+<section id="skillcards">
+<h2>🃏 스킬카드 / 그로우 시리즈 타이밍</h2>
+<p class="section-note">돈·스탯을 풀어도 페르소나 육성 편의는 카드 해금 시점부터 확 달라진다.</p>
+<h3>핵심 타임라인</h3><div class="timeline-cards"><div class="timeline-card searchable"><div class="timeline-date">5/20 이후</div><div><b>전기의자 처형(아이템화) 해금</b><p>마다라메 팰리스 보물 루트 확보 후 벨벳 룸으로 돌아오면 해금.</p></div></div><div class="timeline-card searchable"><div class="timeline-date">5월 하순</div><div><b>미들 그로우</b><p>이자나기 피카로 일반 아이템화 → 미들 그로우 카드.</p></div></div><div class="timeline-card searchable"><div class="timeline-date">5월 하순~</div><div><b>하이 그로우</b><p>이자나기 피카로를 합체경보 중 아이템화 → 하이 그로우 카드.</p></div></div><div class="timeline-card searchable"><div class="timeline-date">6/18 이후</div><div><b>유스케 카드 복제</b><p>황제 코옵이 열리면 스킬카드 복제가 가능. 좋은 카드 1장을 여러 장으로 늘리기 쉬워짐.</p></div></div><div class="timeline-card searchable"><div class="timeline-date">은둔자 코옵 진행 후</div><div><b>하이 그로우 보상</b><p>메멘토스 리퀘스트 「소녀를 좀먹는 무정한 부모」 완료 보상으로 하이 그로우 카드.</p></div></div></div>
+<h3>실사용 핵심 카드 — 아이템화 표</h3>
+<div class="table-wrap"><table><thead><tr><th>스킬카드</th><th>페르소나</th><th>조건</th><th>효과</th></tr></thead><tbody><tr class="searchable"><td><b>미들 그로우</b></td><td>이자나기 피카로</td><td>일반 아이템화</td><td>비활성 페르소나 전투 경험치 50%</td></tr><tr class="searchable"><td><b>하이 그로우</b></td><td>이자나기 피카로</td><td>합체경보 아이템화</td><td>비활성 페르소나 전투 경험치 100%</td></tr><tr class="searchable"><td><b>차지</b></td><td>아테나 피카로</td><td>일반 아이템화</td><td>다음 물리 공격 2.5배</td></tr><tr class="searchable"><td><b>컨센트레이트</b></td><td>아테나 피카로</td><td>합체경보 아이템화</td><td>다음 마법 공격 2.5배</td></tr><tr class="searchable"><td><b>히트라이저</b></td><td>마가츠 이자나기 피카로</td><td>일반 아이템화</td><td>3턴 동안 아군 1명 공격·방어·명중/회피 상승</td></tr><tr class="searchable"><td><b>랜더마이저</b></td><td>마가츠 이자나기 피카로</td><td>합체경보 아이템화</td><td>3턴 동안 적 1명 공격·방어·명중/회피 저하</td></tr><tr class="searchable"><td><b>메디아라한</b></td><td>카구야 피카로</td><td>합체경보 아이템화</td><td>아군 전체 HP 완전 회복</td></tr><tr class="searchable"><td><b>메시아라이저</b></td><td>이자나기 오오카미 피카로</td><td>합체경보 아이템화</td><td>아군 전체 HP 완전 회복 + 상태이상 치료</td></tr><tr class="searchable"><td><b>무도의 마음가짐</b></td><td>츠키요미 피카로</td><td>합체경보 아이템화</td><td>물리 스킬 HP 소비 절반</td></tr><tr class="searchable"><td><b>마술의 소양</b></td><td>츠키요미 피카로</td><td>일반 아이템화</td><td>마법 스킬 SP 소비 절반</td></tr><tr class="searchable"><td><b>불굴의 투지</b></td><td>오르페우스 피카로(f)</td><td>합체경보 아이템화</td><td>전투불능 1회 버티고 HP 전회복</td></tr><tr class="searchable"><td><b>인왕 자세</b></td><td>메사이어 피카로</td><td>합체경보 아이템화</td><td>회피 불가 대신 받는 피해 절반</td></tr></tbody></table></div>
+<div class="tipbox"><b>추천 운용</b><br/>5월 하순 하이 그로우 1장 확보 → 6/18 이후 유스케 복제 → 육성할 페르소나에 배포. 차지·컨센트레이트·히트라이저·랜더마이저도 같은 방식으로 ‘원본 1장 확보 → 복제’가 편함.</div>
+</section>
+<section id="jazz">
+<h2>🎷 재즈클럽 일요일 스킬 일정</h2>
+<p class="section-note">아케치 코옵 Rank 4 이후 해금(최단 6/26). 일요일에는 정해진 스킬을 동료에게 직접 가르칠 수 있음.</p>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>습득 스킬</th></tr></thead><tbody><tr class="searchable"><td>6/26</td><td><b>테트라칸</b></td></tr><tr class="searchable"><td>7/3</td><td><b>마하타루카쟈</b></td></tr><tr class="searchable"><td>7/17</td><td><b>마하라쿠카쟈</b></td></tr><tr class="searchable"><td>7/31</td><td><b>마하스쿠카쟈</b></td></tr><tr class="searchable"><td>8/7</td><td><b>마하타룬다</b></td></tr><tr class="searchable"><td>8/14</td><td><b>마하라쿤다</b></td></tr><tr class="searchable"><td>8/28</td><td><b>마하스쿤다</b></td></tr><tr class="searchable"><td>9/4</td><td><b>차지</b></td></tr><tr class="searchable"><td>9/25</td><td><b>컨센트레이트</b></td></tr><tr class="searchable"><td>10/2</td><td><b>테트라칸</b></td></tr><tr class="searchable"><td>10/9</td><td><b>마하타루카쟈</b></td></tr><tr class="searchable"><td>10/16</td><td><b>마하라쿠카쟈</b></td></tr><tr class="searchable"><td>10/23</td><td><b>마하스쿠카쟈</b></td></tr><tr class="searchable"><td>10/30</td><td><b>마카라칸</b></td></tr><tr class="searchable"><td>11/6</td><td><b>마하타룬다</b></td></tr><tr class="searchable"><td>11/13</td><td><b>마하라쿤다</b></td></tr><tr class="searchable"><td>11/27</td><td><b>마하스쿤다</b></td></tr><tr class="searchable"><td>12/4</td><td><b>히트라이저</b></td></tr></tbody></table></div>
+<div class="tipbox"><b>체감 가치 높은 날</b><br/>9/4 차지 · 9/25 컨센트레이트 · 12/4 히트라이저. 후타바를 일요일에 데려가면 표의 스킬 대신 전용 서포트 플러스 계열을 배움.</div>
+</section>
+<section id="ending"><h2>🧭 엔딩 분기 스포 최소 경고</h2><div class="deadline-grid">
+<div class="deadline"><span class="d">11/20 전후</span><span class="t">심문 선택지</span><p>괴도단 동료/협력자를 팔아넘기는 방향의 선택은 피하기.</p></div>
+<div class="deadline"><span class="d">12/24</span><span class="t">수상한 계약</span><p>‘좋다/받아들인다’ 계열 대신 거절. 정상 루트 유지.</p></div>
+<div class="deadline"><span class="d">1월~2/2</span><span class="t">3학기 현실 선택</span><p>현실을 그대로 받아들이는 제안은 거절하면 로열 최종 루트 유지.</p></div>
+<div class="deadline"><span class="d">로열 핵심</span><span class="t">마루키 9</span><p>아케치·요시자와는 추가 콘텐츠 확장, 마루키 Rank 9가 3학기 진입 자체의 핵심 조건.</p></div>
+</div></section>
+<section id="sources"><h2>📚 기준 자료</h2><div class="source-box"><b>일정 뼈대:</b> 사용자가 업로드한 GameFAQs Persona 5 Royal Switch Walkthrough 원본.<br/><b>한국어 수업/시험/퀴즈/크로스워드:</b> 환상의 공략(FunkyGame), 게임 팁 저장소 등 한국어판 자료 교차 확인.<br/><b>코옵 답안:</b> 디나(Dina) 한국어 P5R 선택지 정리, 먈랑 P5R 코옵 선택지 정리 교차 참고.<br/><b>팰리스 마감:</b> P5R 가이드의 팰리스 기간 및 예고장 마감 자료 교차 확인.<br/><br/>이 문서는 해외 영어 명칭을 그대로 쓰지 않고 <b>리마스터 한국어판 실행표</b>로 구성함.<br/><b>추가 확장:</b> P5R 합체표/특수합체, 힘 코옵 합체 루트, 코옵 어빌리티, 메멘토스 33종, 일용품·시설 해금, 전서 조건형 페르소나를 한국어 자료와 GameFAQs/RPG Site 계열 자료로 교차 검증.</div></section>
+</main></div>
+<script>
+const sidebar=document.getElementById('sidebar');
+document.getElementById('menuBtn').addEventListener('click',()=>sidebar.classList.toggle('open'));
+sidebar.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>sidebar.classList.remove('open')));
+const input=document.getElementById('search');
+input.addEventListener('input',()=>{
+ const q=input.value.trim().toLowerCase();
+ const els=[...document.querySelectorAll('.searchable')];
+ if(!q){els.forEach(e=>e.classList.remove('hidden'));return;}
+ els.forEach(e=>{const hit=e.innerText.toLowerCase().includes(q);e.classList.toggle('hidden',!hit);if(hit&&e.tagName==='DETAILS')e.open=true;});
+});
+
+document.querySelectorAll('.persist-check').forEach(cb=>{
+  const k='p5r-nav-'+cb.dataset.key;
+  cb.checked=localStorage.getItem(k)==='1';
+  cb.addEventListener('change',()=>localStorage.setItem(k,cb.checked?'1':'0'));
+});
+function clearChecks(prefix){
+  document.querySelectorAll('.persist-check').forEach(cb=>{
+    if(cb.dataset.key.startsWith(prefix)){
+      cb.checked=false; localStorage.removeItem('p5r-nav-'+cb.dataset.key);
+    }
+  });
+}
+
+
+document.querySelectorAll('.rq-filterbar button').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.rq-filterbar button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('#request-guide .rq-card').forEach(card=>{const p=(card.querySelector('.rq-priority')?.innerText||'');const t=(card.dataset.rqType||'');let show=true;if(f==='identify')show=t.includes('대상 특정')||t.includes('2단계')||t.includes('설득');if(f==='job')show=t.includes('알바');if(f==='urgent')show=p.includes('🚨');if(f==='third')show=p.includes('3학기');card.classList.toggle('rq-hidden',!show);});});});
+</script>
+</body></html>
